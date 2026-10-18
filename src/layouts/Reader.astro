@@ -2,6 +2,6 @@
 import Shell from './Shell.astro';
 import source from '../data/source.json';
 const {frontmatter,headings=[]}=Astro.props;const b=import.meta.env.BASE_URL;
-const links=[['overview','项目概览'],['workflow','核心流程'],['group-intake','反馈入口'],['adapters','工具适配'],['owner-commands','交互示例'],['acceptance','验收清单'],['contributing','参与维护'],['security','安全边界'],['agents','项目规则']];
+const links=[['user-guide','用户指南'],['overview','项目概览'],['workflow','核心流程'],['group-intake','反馈入口'],['adapters','工具适配'],['owner-commands','交互示例'],['acceptance','验收清单'],['contributing','参与维护'],['security','安全边界'],['agents','项目规则']];
 ---
 <Shell title={frontmatter.title+' · HiveFlow'}><main id="main" class="reader wrap"><aside class="sidebar"><a class="back" href={b+'#reading'}>← 返回阅读入口</a><nav aria-label="规范章节">{links.map(([slug,name])=><a href={b+'read/'+slug+'/'} aria-current={Astro.url.pathname===b+'read/'+slug+'/'?'page':undefined}>{name}</a>)}</nav><p class="fine">固定规范快照<br/><code>{source.commit.slice(0,7)}</code><br/>以页面内容为准，不代表部署状态。</p></aside><div class="reader-body"><div class="reader-kicker">HIVEFLOW / 规范阅读</div><article class="prose"><slot/></article><div class="source-note">内容来自 HiveFlow 规范的固定快照 <code>{source.commit.slice(0,7)}</code>。<a href={'https://github.com/xiiiblue/hive-flow/blob/'+source.commit+'/'+frontmatter.source}>查看规范源文件 ↗</a>（源仓库访问依权限；本站可独立阅读）</div><a class="text-link" href={b+'#reading'}>← 选择下一篇规范</a></div><aside class="toc"><strong>本页目录</strong>{headings.filter(h=>h.depth===2).map(h=><a href={'#'+h.slug}>{h.text}</a>)}</aside></main></Shell>
