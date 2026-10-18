@@ -2,6 +2,7 @@
 layout: ../../layouts/Reader.astro
 title: "HiveFlow"
 source: README.md
+editorialNote: "本站将开头的英文简介译为中文，规范含义保持不变。"
 ---
 
 # HiveFlow
@@ -10,7 +11,7 @@ HiveFlow 是源自蜂巢实践的研发协作规范，探索从 Director 逐步�
 
 它复用现成的理解、工单和沟通能力，不从零构建模型、工单系统或即时通信平台，也不提供新的业务服务或任务调度器。
 
-HiveFlow is an agent collaboration specification, not a deployable service. The documentation is currently maintained in Chinese.
+HiveFlow 维护的是智能体协作规范，并非可部署的服务；规范文档目前以中文维护。
 
 ## 复用现成能力
 

@@ -3,4 +3,29 @@ import '../styles/site.css';
 const {title='HiveFlow · 让协作向前流转',description='源自蜂巢实践，探索在明确授权边界内自动流转的智能体研发协作规范。'}=Astro.props;
 const base=import.meta.env.BASE_URL;
 ---
-<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#087e78"/><title>{title}</title><link rel="icon" href={base+'favicon.svg'} type="image/svg+xml"/><script is:inline>try{if(localStorage.getItem('flow-theme')==='dark')document.documentElement.dataset.theme='dark'}catch{}</script></head><body><a class="skip" href="#main">跳到正文</a><header><div class="wrap header-inner"><a class="brand" href={base}><span class="logo" aria-hidden="true">↳</span>HiveFlow<span class="brand-note">源自蜂巢</span></a><nav aria-label="主导航"><a href={base+'#reuse'}>现成能力</a><a href={base+'read/user-guide/'}>使用指南</a><a href={base+'#reading'}>阅读规范</a><button id="theme" aria-label="切换明暗主题" aria-pressed="false">◐</button></nav></div></header><slot/><footer class="wrap"><div><a class="brand" href={base}>HiveFlow</a><p>从人指挥协作，到流程推动协作。</p></div><div class="footer-links"><a href="https://www.bluexiii.com/hive/">蜂巢 ↗</a><a href="https://www.bluexiii.com/acdl/">ACDL ↗</a><a href={base+'read/acceptance/'}>验证边界</a></div><p class="fine">项目介绍与规范快照 · 自动开发尚未启用 · 许可证尚未选定</p></footer><script>const b=document.querySelector('#theme');const sync=()=>b?.setAttribute('aria-pressed',String(document.documentElement.dataset.theme==='dark'));sync();b?.addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';try{localStorage.setItem('flow-theme',dark?'dark':'light')}catch{}sync()});</script></body></html>
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#087e78"/><title>{title}</title><link rel="icon" href={base+'favicon.svg'} type="image/svg+xml"/><script is:inline>try{if(localStorage.getItem('flow-theme')==='dark')document.documentElement.dataset.theme='dark'}catch{}</script></head><body><a class="skip" href="#main">跳到正文</a><header><div class="wrap header-inner"><a class="brand" href={base}><span class="logo" aria-hidden="true">↳</span>HiveFlow<span class="brand-note">源自蜂巢</span></a><nav aria-label="主导航"><a href={base+'#reuse'}>现成能力</a><a href={base+'read/user-guide/'}>使用指南</a><a href={base+'#reading'}>阅读规范</a><button id="theme" aria-label="切换明暗主题" aria-pressed="false">◐</button></nav></div></header><slot/><footer class="wrap site-footer">
+  <div class="footer-top">
+    <div><a class="brand" href={base}>HiveFlow</a><p>从人指挥协作，到流程推动协作。</p></div>
+    <nav class="footer-links" aria-label="页脚导航"><a href="https://www.bluexiii.com/hive/">蜂巢 ↗</a><a href="https://www.bluexiii.com/acdl/">ACDL ↗</a><a href={base+'read/acceptance/'}>验证边界</a></nav>
+  </div>
+  <div class="footer-bottom">
+    <p class="fine">项目介绍与规范快照 · 自动开发尚未启用 · 许可证尚未选定</p>
+    <div class="footer-meta">
+      <span class="site-counter" aria-label="域名访问统计（不蒜子）" title="不蒜子按域名汇总，非 HiveFlow 独立访问量">
+        <span id="busuanzi_container_site_uv">域名访客 <strong id="busuanzi_value_site_uv"></strong></span>
+        <span id="busuanzi_container_site_pv">域名浏览 <strong id="busuanzi_value_site_pv"></strong></span>
+      </span>
+      <a href="https://beian.miit.gov.cn/" target="_blank" rel="noopener noreferrer">鲁ICP备18050487号-1</a>
+    </div>
+  </div>
+</footer>
+<script is:inline>
+  // Local previews must not send visits or local URLs to the public counter.
+  if (location.hostname === 'www.bluexiii.com') {
+    const counter = document.createElement('script');
+    counter.src = 'https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js';
+    counter.async = true;
+    counter.referrerPolicy = 'no-referrer-when-downgrade';
+    document.body.appendChild(counter);
+  }
+</script><script>const b=document.querySelector('#theme');const sync=()=>b?.setAttribute('aria-pressed',String(document.documentElement.dataset.theme==='dark'));sync();b?.addEventListener('click',()=>{const dark=document.documentElement.dataset.theme!=='dark';document.documentElement.dataset.theme=dark?'dark':'light';try{localStorage.setItem('flow-theme',dark?'dark':'light')}catch{}sync()});</script></body></html>
