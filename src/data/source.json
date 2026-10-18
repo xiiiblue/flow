@@ -1,0 +1,15 @@
+{
+  "repository": "xiiiblue/hive-flow",
+  "commit": "bfc0a13835eecb3c1ba8530ed8f74dac6f14e432",
+  "files": {
+    "README.md": "415f5964ec5ce708f224fee53e4a79b5af990434f794299ce10c6f5280770dc0",
+    "docs/WORKFLOW.md": "eed98f3d64928c0fd8b74fc40600f05d92085dd2a16669c382a1a0c38265da27",
+    "docs/GROUP_INTAKE.md": "762fb4a1b2cd90dee733cbe40ee16b04e231c0011329aab9ccc121d038837aaa",
+    "docs/ADAPTERS.md": "db88c253fe09bf1b81252e3a73c065c234ad0c42f47cb0201a57d0aebf6a65da",
+    "docs/OWNER_COMMANDS.md": "735f557e664245555c1f998efd63a8c9f9d98ff74b0f5ede82b2e68fed3572a0",
+    "docs/ACCEPTANCE.md": "b96b73a08b1e85f8271fa1965bb9e529fe426874e3b8387e50b48d9c38dadfb7",
+    "CONTRIBUTING.md": "3ed2d379e8f7758afc55869292e04228597972960205d8fb0d5d0e10873675cc",
+    "SECURITY.md": "1c39e89a403afa471c18f9c48a28081f71bca0f312349382cfca27fc402c321d",
+    "AGENTS.md": "4a5c55a4de5275ef82f3b5bc6d2142269b570b00cdefe6b1471195009d9f0a94"
+  }
+}
