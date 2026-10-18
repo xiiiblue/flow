@@ -28,7 +28,7 @@ npm run test:browser
 
 ## GitHub Pages 准备状态
 
-预期站点：**https://www.bluexiii.com/flow/**（尚未发布）。
+目标站点：**https://www.bluexiii.com/flow/**。实际发布结果以 GitHub Actions 和线上页面为准。
 
 `astro.config.mjs` 的 base 固定为 `/flow`、输出为 `dist/`，包含 `.nojekyll`。站内链接与资源都经过该子路径验证，不添加 CNAME，不修改 DNS。未设置 canonical 或 sitemap 以免把未发布站点标成现存页面。
 
@@ -41,14 +41,11 @@ npm run test:browser
 
 个人 Pages 仓库已配置 `www.bluexiii.com`；上述项目站 Pages 记录没有单独 CNAME，并实际在个人域名子路径访问。flow 采用同样的路径安排，但仍需真实启用后验收。
 
-当前登录所有者下 `xiiiblue/flow` 返回 404，因此此交付只保存在本地，没有创建远端仓库、推送或启用 Pages。后续需要负责人确定：
+网站源码与规范仓库分开：公开网站仓库为 `xiiiblue/flow`，规范仓库 `xiiiblue/hive-flow` 继续保持私有。网站包含经审阅的规范快照，访客无需访问私有仓库即可阅读。
 
-1. 创建 `xiiiblue/flow`，选择仓库可见性及许可证。公开前审阅快照与权利；没有自动继承规范仓库的许可。
-2. 推送本目录源码到其主分支，保持规范与网站仓库分离。
-3. 明确授权后在仓库 Settings → Pages 选择 GitHub Actions，参照 `deploy/pages-workflow.yml.example` 安装工作流。
-4. 首次发布后检查真实 `/flow/` 页面、资源、阅读链接、404 和手机布局。构建通过不等于已经上线。
+`.github/workflows/pages.yml` 在 main 推送或手动触发时构建、检查并发布 `dist/`；仓库 Pages 使用 GitHub Actions。不会创建凭据、修改 DNS 或启用任何研发自动模式。`deploy/pages-workflow.yml.example` 保留为手动发布的参考模板。
 
-示例工作流在 deploy 目录，不在 `.github/workflows` 中，不会自动触发发布。此交付不改变其他仓库、自动模式、运行环境或 bridge。
+后续内容修改先检查公开范围，再通过本地检查和对应提交的 Actions；发布后验收真实 `/flow/` 页面、资源、阅读链接、404 和手机布局。构建通过不等于线上验收通过。
 
 ## 许可
 
