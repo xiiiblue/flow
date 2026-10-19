@@ -1,16 +1,97 @@
 {
-  "repository": "xiiiblue/hive-flow",
-  "commit": "7ac97e716d4d77590dfb6bf2773fd529f212e556",
+  "repository": "xiiiblue/hive-os",
+  "displayName": "HiveOS 自动化手册（获准公开整理）",
+  "commit": "70d2ee3d814baacbbfb830480c3d41090b60eb1c",
   "files": {
-    "README.md": "8d177767e1d79df547e727724290b1e6c1d2049fd37d67bc54e7f37cf0c3fd63",
-    "docs/USER_GUIDE.md": "6a2288c77cb7a7b4b75df58bc33e78eabf2550bd4717499d335fed0254029e79",
-    "docs/WORKFLOW.md": "eed98f3d64928c0fd8b74fc40600f05d92085dd2a16669c382a1a0c38265da27",
-    "docs/GROUP_INTAKE.md": "3fd21321ee25c01ff7bf187c12eabd854e687cf587059d8bc5c11d6143364c40",
-    "docs/ADAPTERS.md": "d0e0bcdf1b4f87f78f8e10a6c0837196748db49c21154b2182c1ffeac0ce27fa",
-    "docs/OWNER_COMMANDS.md": "735f557e664245555c1f998efd63a8c9f9d98ff74b0f5ede82b2e68fed3572a0",
-    "docs/ACCEPTANCE.md": "b96b73a08b1e85f8271fa1965bb9e529fe426874e3b8387e50b48d9c38dadfb7",
-    "CONTRIBUTING.md": "3ed2d379e8f7758afc55869292e04228597972960205d8fb0d5d0e10873675cc",
-    "SECURITY.md": "1c39e89a403afa471c18f9c48a28081f71bca0f312349382cfca27fc402c321d",
-    "AGENTS.md": "4a5c55a4de5275ef82f3b5bc6d2142269b570b00cdefe6b1471195009d9f0a94"
+    "docs/11-手册/05-自动化手册/README.md": "03121625f9346dbbc5b66cd04261fefc989edf7a67c563ad09199143fd140132"
+  },
+  "snapshot": "src/data/handbook.md",
+  "note": "固定手册整理版本；不代表实时运行、完整链路验收或私有仓库访问许可。",
+  "pages": {
+    "overview": {
+      "source": "docs/11-手册/05-自动化手册/README.md",
+      "sections": [
+        1,
+        2,
+        9
+      ]
+    },
+    "user-guide": {
+      "source": "docs/11-手册/05-自动化手册/README.md",
+      "sections": [
+        3,
+        8
+      ]
+    },
+    "workflow": {
+      "source": "docs/11-手册/05-自动化手册/README.md",
+      "sections": [
+        3,
+        4,
+        6,
+        7
+      ]
+    },
+    "group-intake": {
+      "source": "docs/11-手册/05-自动化手册/README.md",
+      "sections": [
+        2,
+        3,
+        8
+      ]
+    },
+    "adapters": {
+      "source": "docs/11-手册/05-自动化手册/README.md",
+      "sections": [
+        2,
+        5,
+        7
+      ]
+    },
+    "owner-commands": {
+      "source": "docs/11-手册/05-自动化手册/README.md",
+      "sections": [
+        3,
+        4,
+        7,
+        8
+      ]
+    },
+    "acceptance": {
+      "source": "docs/11-手册/05-自动化手册/README.md",
+      "sections": [
+        4,
+        5,
+        6,
+        7
+      ]
+    },
+    "security": {
+      "source": "docs/11-手册/05-自动化手册/README.md",
+      "sections": [
+        2,
+        3,
+        5,
+        6,
+        7,
+        9
+      ]
+    },
+    "contributing": {
+      "source": "docs/11-手册/05-自动化手册/README.md",
+      "sections": [
+        1,
+        9
+      ]
+    },
+    "agents": {
+      "source": "docs/11-手册/05-自动化手册/README.md",
+      "sections": [
+        1,
+        2,
+        5,
+        9
+      ]
+    }
   }
 }
