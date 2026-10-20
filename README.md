@@ -1,71 +1,64 @@
-# HiveFlow 网站
+# HiveFlow网站
 
-蜂巢的第二个副产物：从 Director 逐步组织 Agent 协作，探索授权边界内的自动流转。网站品牌为 **HiveFlow**；本目录是独立静态介绍与手册阅读站，不是运行服务或调度器。
+蜂巢的第二个副产物：连接反馈、决定和有证据的交付。云端dots调查并登记Issue，后续研发由Director的MacMini上的Codex承接；手动和原生定时任务都可以选择PR待审或完整交付。当前业务自动执行尚未启用。
+
+本仓库是独立静态网站，不是研发运行服务或调度器。
+
+## 内容依赖与来源
+
+**HiveFlow规范→HiveFlow介绍→HiveFlow网站。**
+
+- 规范位于HiveOS的`docs/06-自动化/`，保存唯一权威执行规则。
+- 介绍位于`docs/11-手册/05-自动化手册/`，解释方法、流程和案例，是网站正文的原始材料。
+- 网站参考介绍整理公开内容，核对同版本规范，不从网页文案产生执行许可。
+
+本次来源固定为`xiiiblue/hive-os`提交`4d4f9090aeac6638c424c39d2abbed5ce6183979`。`src/data/source.json`保存16份介绍材料的SHA-256、每篇网页与介绍章节的对应关系，以及本地对照的规范编号；`src/data/handbook.md`保留公开目录原始字节供校验。同版本规范仅在本地核对，不导入网站，不保存运行配置、日志、群消息或审批记录。
+
+阅读区有19篇页面：目录、12章正文、3篇附录和3篇专题说明。原有公开阅读地址继续可用，内容已按同一来源更新。页面标明源文档、固定提交和整理范围；上游介绍手册保持Review状态，网站不将它提升为执行规范。
+
+文档图示整理为静态流程说明，不依赖外部图表脚本。合成案例明确标注，不作为真实交付或验收记录。旧独立hive-flow仓库不再是本站的内容来源。
 
 ## 本地开发与验证
 
-需要 Node.js 24.18.0+（同一主版本）、npm。依赖由 package-lock.json 锁定。
+需要Node.js24.18.0+（同一主版本）和npm，依赖由`package-lock.json`锁定。macOS测试前设置`TMPDIR=/tmp`。
 
 ```sh
 npm ci --ignore-scripts
 npm run dev
-npm test
+TMPDIR=/tmp npm test
 npm run preview -- --port 4330
-npm run test:browser
+TMPDIR=/tmp npm run test:browser
 ```
 
-浏览器检查默认使用 macOS 上已有的 Google Chrome；其他机器通过 `FLOW_CHROME` 指定浏览器可执行文件，`FLOW_PREVIEW` 可指定预览源站。不会连接机器人、执行规范中的业务流程或发送外部消息。检查结束可用 `npx astro preview stop` 停止本项目预览。
+浏览器检查默认使用macOS已有的Google Chrome；其他机器通过`FLOW_CHROME`指定浏览器，`FLOW_PREVIEW`可指定预览源站。检查结束可用`npx astro preview stop`停止本项目预览。
 
-## 内容与技术
+`npm test`构建静态站点，并检查完整阅读目录、来源映射、四种组合、`/flow/`下的全部本地链接与锚点、公开内容边界和既有页脚行为。`npm run test:browser`验证首页与19篇阅读页在320、390、768、1440四种宽度下的布局，以及目录展开、章节导航、主题保留、打印和访问计数降级。截图与结果保存在忽略提交的`.verification/`，检查不执行HiveFlow业务流程或向群发送消息。
 
-- Astro 7.4.0，纯静态输出，无服务端、数据库、账户或外部字体。页脚沿用 ACDL 的不蒜子公开访问计数，仅在 `www.bluexiii.com` 加载；本地预览不发送统计请求。
-- 首页：现成能力复用、蜂巢/ACDL/HiveFlow 关系、流程演进、群使用示例、当前状态和阅读入口。
-- 用户指南：`/flow/read/user-guide/`，用自然语言介绍群里@提问、报Bug、提需求、补充信息和登记后的决定。
-- 手册介绍：10 篇 Markdown 阅读页，章节导航、桌面页内目录、深色主题与打印样式。
-- 首页明确自动开发尚未启用。示意图不显示实时任务、不代表自动化已经跑通。
-- 内容来源为获准公开的HiveOS自动化手册，`src/data/source.json`记录固定提交、手册SHA-256及10页章节映射；`src/data/handbook.md`保存该公开素材的原始字节供校验，不采集私有规范、运行配置、日志、群消息或审批记录。
-- 阅读页为面向人的整理稿，不逐字镜像执行协议；来源说明不要求访客访问私有仓库。
-- 更新内容时只按需选取获准公开手册版本，审阅公开范围，维护页面和来源清单并运行全部检查。不再追踪独立hive-flow仓库；没有定时同步或双向写回。
-- `src/styles/site.css` 维护家族式浅底深蓝文字与 HiveFlow 青绿色强调；无需图片服务。
+## 更新内容
 
-## GitHub Pages 准备状态
+1. 读取网站`AGENTS.md`，核对分支和本地差异。
+2. 在HiveOS选择包含规范与介绍同步修订的完整提交，先读介绍及其规范依据。
+3. 审阅公开范围，更新正文、首页摘要与章节导航，保留授权条件、合成案例和未验证范围。
+4. 更新`src/data/source.json`中的提交、原始文件摘要、核对日期与页面映射。摘要对应源文件原始字节，不冒充网站整理稿的摘要。
+5. 运行本地检查，实际查看桌面、手机及深色截图；区分文档检查与真实业务验收。
+6. 按本次授权提交推送，检查对应提交的GitHub Actions和实际线上页面。只完成本地构建时，不宣称已经发布。
 
-目标站点：**https://www.bluexiii.com/flow/**。实际发布结果以 GitHub Actions 和线上页面为准。
+仓库内相对链接已改成本站阅读链接或说明文字，网页不提供私有HiveOS仓库链接。公开目录原文和来源映射可在flow仓库核对，网站可独立阅读，无需访问私有仓库。新增长期规则时，先回到HiveOS规范确认，不能在网站自行定义。
 
-`astro.config.mjs` 的 base 固定为 `/flow`、输出为 `dist/`，包含 `.nojekyll`。站内链接与资源都经过该子路径验证，不添加 CNAME，不修改 DNS。未设置 canonical 或 sitemap 以免把未发布站点标成现存页面。
+## 技术与发布
 
-核验到的家族站点：
+Astro7.4.0静态输出，无服务端、数据库、账户或外部字体。`astro.config.mjs`固定`base: /flow`、输出`dist/`并包含`.nojekyll`。新路径、资源和锚点都需通过子路径验证。
 
-|项目|实际地址|技术|
-|---|---|---|
-|蜂巢|https://www.bluexiii.com/hive/|Astro，静态 Pages workflow|
-|ACDL|https://www.bluexiii.com/acdl/|Next.js，静态导出，Pages workflow|
+站点为[www.bluexiii.com/flow/](https://www.bluexiii.com/flow/)，公开源码仓库为[xiiiblue/flow](https://github.com/xiiiblue/flow)。既有`.github/workflows/pages.yml`在main推送或手动触发时构建、检查并发布；本次未改变Pages设置、DNS、凭据、可见性或HiveFlow业务启用状态。`deploy/pages-workflow.yml.example`保留为参考，不新增活动发布入口。
 
-个人 Pages 仓库已配置 `www.bluexiii.com`；上述项目站 Pages 记录没有单独 CNAME，并实际在个人域名子路径访问。flow 采用同样的路径安排，但仍需真实启用后验收。
+网站沿用蜂巢与ACDL的家族风格、HiveFlow青绿色强调、明暗主题、阅读导航和打印样式。首页展示Issue交接、两组独立选择、Director介入、现有实践及尚未启用的范围。
 
-网站源码与规范仓库分开：公开网站仓库为 `xiiiblue/flow`，唯一权威规范位于私有HiveOS项目的docs/06-自动化；网站只使用docs/11-手册/05-自动化手册中获准公开的说明。访客无需访问私有仓库，独立规范导出仓库不再作为追踪源。
-
-`.github/workflows/pages.yml` 在 main 推送或手动触发时构建、检查并发布 `dist/`；仓库 Pages 使用 GitHub Actions。不会创建凭据、修改 DNS 或启用任何研发自动模式。`deploy/pages-workflow.yml.example` 保留为手动发布的参考模板。
-
-后续内容修改先检查公开范围，再通过本地检查和对应提交的 Actions；发布后验收真实 `/flow/` 页面、资源、阅读链接、404 和手机布局。构建通过不等于线上验收通过。
-
-## 许可
-
-许可证待负责人选择，当前未添加 LICENSE。引用的公开手册素材保留来源标识，公开发布与贡献授权方式仍需明确。
+许可证仍待负责人选择，未添加`LICENSE`，不因网站公开就自行承诺许可或外部贡献授权。
 
 ## 页脚访问统计
 
-备案信息与工信部链接核对自 ACDL 公开站点及 `xiiiblue/acdl` 的 `components/SiteFooter.tsx`：鲁ICP备18050487号-1。
+沿用已核验的备案信息[鲁ICP备18050487号-1](https://beian.miit.gov.cn/)和不蒜子2.3公开脚本，仅在`www.bluexiii.com`加载；本地预览不发送统计请求。未新增Cloudflare beacon、账户、凭据或付费服务。
 
-复用 ACDL 的不蒜子 2.3 公开脚本，不复制其 Cloudflare beacon 或 token，也不新增账户、凭据或付费服务。脚本通过 JSONP 向 `busuanzi.ibruce.info` 请求计数，使用 `no-referrer-when-downgrade` 提供页面 Referrer；服务端会接收常规网络请求信息（如 IP、浏览器请求头）。已检查的客户端脚本不写入 cookie/localStorage，不采集登录身份；第三方服务端的处理与保留策略不由本站控制。
+脚本通过JSONP向`busuanzi.ibruce.info`请求计数，使用`no-referrer-when-downgrade`提供页面Referrer。服务端会接收常规网络请求信息；此前检查的客户端脚本不写cookie/localStorage、不采集登录身份，第三方服务端的处理与保留策略不由本站控制。
 
-`site_uv` / `site_pv` 按域名汇总，可能包含同域的其他项目，因此显示为“域名访客 / 域名浏览”，不声称是 Flow 独立数据。数字初始为空且整项隐藏，仅由服务返回后显示；脚本被阻断或不可用时，备案和其他页脚内容保持可用。
-
-
-## 本次手册内容刷新（本地验收，未发布）
-
-来源为获准公开的HiveOS自动化手册，精确版本、原始字节摘要及10页章节映射以src/data/source.json为准。保留现有视觉、12个页面路由和/flow子路径；不公开私有规范、运行链接或配置，不要求访客访问私有仓库。
-
-npm test通过8项检查，构建12页，310个本地链接/资源/锚点可解析。npm run test:browser通过11路由×320/390/768/1440共44组，导航、主题保留、打印及统计不可用/长数字模拟均通过，无页面错误或失败请求；桌面、手机和深色截图在本地.verification目录，不进Git。
-
-先前默认沙箱未能启动预览/Chrome，未得到浏览器结果；随后使用仅127.0.0.1的一次性预览及隔离临时Chrome完成复验，未更改网站网络配置。没有触发Pages、改DNS/CNAME或启用任何自动模式。VERIFICATION.md保留的是首次站点历史，不代表本次线上验收。
+`site_uv`和`site_pv`按域名汇总，可能包含同域其他项目，因此显示“域名访客／域名浏览”，不声称是Flow独立数据。数字初始为空且隐藏，脚本被阻断时备案和其他页脚内容仍可用。

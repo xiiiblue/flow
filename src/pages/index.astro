@@ -1,12 +1,121 @@
 ---
 import Shell from '../layouts/Shell.astro';
+import source from '../data/source.json';
 const b=import.meta.env.BASE_URL;
-const books=[['user-guide','00','用户使用指南','如何@提问、报Bug、提需求，补充信息并理解回执和后续边界。'],['workflow','01','两种交付终点','PR待审与完整交付，以及各自的授权和结束条件。'],['group-intake','02','反馈入口','把咨询、Bug 和需求转成清楚的下一步。'],['adapters','03','工具适配','职责怎样分配，工具能做什么、还缺什么。'],['owner-commands','04','交互示例','用自然语言说明事项、范围和需要的决定。'],['acceptance','05','验收清单','用案例检查边界，区分设计、测试与现场验证。']];
+const summaries={
+  introduction:'理解HiveFlow解决的问题，以及它与蜂巢和ACDL的关系。',
+  adapters:'云端dots、Director、MacMini上的Codex与消息桥接分别做什么。',
+  workflow:'从群反馈到Issue，再到本地研发；查看四种组合与介入次数。',
+  'user-guide':'怎样提问、描述现象、补充信息和理解登记结果。',
+  authorization:'把值得做与可以做分开，一次说清有效任务范围。',
+  status:'评审、处理进度、正式登记与交付事实各自表达。',
+  delivery:'选择停在PR待审，或在授权内完成约定交付。',
+  receipts:'交付记录怎样对应原反馈者，通知未知时怎样处理。',
+  automation:'在本机准备有界定时配置，核对选单与启用条件。',
+  adoption:'受控决定怎样生产、认领、取消和恢复。',
+  recovery:'核对版本、只读调查、保护隐私并接续未知结果。',
+  acceptance:'分清文档、合成演练和现场证据，不夸大已经具备的能力。',
+  glossary:'查术语、状态和经常混淆的问题。',
+  'owner-commands':'沿一条合成导出问题，看两种交付终点和异常处置。',
+  contributing:'规范怎样进入介绍，再成为网站的原始材料。',
+};
+const books=source.pages.filter(page=>page.kind==='chapter');
+const modes=[
+ {start:'manual',delivery:'pr_review',eyebrow:'手动启动 / PR待审',title:'先交给你看，再决定后续',text:'你在MacMini的可信Codex会话发起任务。完成开发、检查与PR后停止，等待你决定并推进合并、部署。',count:'本地介入：启动1次，PR后再1次。'},
+ {start:'manual',delivery:'full_delivery',eyebrow:'手动启动 / 完整交付',title:'一次授权，推进到约定交付',text:'你明确目标、范围、环境与验收。Codex在有效授权内连续完成必要审阅、修正、合并、部署、验收和收尾。',count:'本地介入：完整授权1次，正常路径接收结果。'},
+ {start:'scheduled',delivery:'pr_review',eyebrow:'定时启动 / PR待审',title:'本机定时准备候选',text:'先批准并实际启用有界配置，本机任务才可定时选单。每单完成PR后，仍需你再介入一次处理合并、部署。',count:'本地介入：无需逐单发起，PR后介入1次。'},
+ {start:'scheduled',delivery:'full_delivery',eyebrow:'定时启动 / 完整交付',title:'有效配置内，连续完成交付',text:'本机任务核验配置、事项与已有工作，满足选单及所需认领条件后，连续完成规定审阅、合并、部署与验收。',count:'本地介入：无需逐单发起或例行确认。'},
+];
 ---
-<Shell><main id="main"><section class="hero wrap"><div class="hero-copy"><p class="eyebrow"><span></span>蜂巢的第二个副产物 / HIVEFLOW</p><h1>让协作，<br/>自己向前<span class="accent">流转。</span></h1><p class="lead">人确定方向与边界，Agent 承接下一步。<br/>探索从 Director 逐步协调，走向授权范围内<br class="desktop"/>可持续推进的研发流程。</p><div class="actions"><a class="button primary" href={b+'read/user-guide/'}>查看用户指南 <span>↗</span></a><a class="text-link" href="#process">了解流转方式 ↓</a></div><p class="hero-note"><span class="status-dot"></span>规范持续演进 · 当前自动开发未启用</p></div><div class="flow-board" aria-label="流转概念示意：目标与边界确定后，调查、方案、实施和验证连续衔接，遇到变化返回负责人决定。不是实时运行状态。"><div class="board-title"><span>从一个目标，到可验证的结果</span><span class="mono">CONCEPT / 01</span></div><div class="boundary"><span class="boundary-icon">⌁</span><div><strong>目标与授权边界</strong><small>Director 确定方向、范围与停止条件</small></div><span class="pill">人决定</span></div><div class="board-track"><div><i>01</i><strong>调查反馈</strong><small>核对事实与已有工作</small></div><span>↓</span><div><i>02</i><strong>形成方案</strong><small>目标、影响与验收</small></div><span>↓</span><div><i>03</i><strong>实施与验证</strong><small>按有效授权分阶段推进</small></div><span>↓</span><div><i>04</i><strong>交付与收尾</strong><small>让结果有证据可查</small></div></div><div class="board-return"><span>↶</span> 范围变化、授权失效或结果未知<br/><b>停下核对，回到必要的决定。</b></div><p class="board-caption">流程概念示意 · 不代表业务自动执行已启用</p></div></section>
-<section class="reuse-section section wrap" id="reuse"><div class="section-top"><p class="eyebrow">复用现成能力</p><h2>把已有的能力，<br/>接成持续协作的流程。</h2><p>不从零构建模型、工单或即时通信平台。<br/>把重点放在反馈、决定与交付如何衔接。</p></div><div class="capability-grid"><article><span class="mono">理解与协调</span><h3>Dots</h3><p>调查反馈、整理方案，在负责人本人主对话核验采纳与授权，复用其可用模型能力。</p><small>具体模型以账号和平台支持为准。</small></article><article><span class="mono">Bug 与需求</span><h3>Codex</h3><p>在真实项目权限内开发、测试和交付，GitHub Issues 与 PR 保留事项和审阅证据。</p><small>登记、采纳与实施分别确认。</small></article><article><span class="mono">日常工作沟通</span><h3>企业微信</h3><p>在管理员接入并授权的工作群沟通，经独立桥接连接已授权响应方。</p><a href="https://github.com/xiiiblue/wecom-slack-bridge">wecom-slack-bridge ↗</a></article></div><p class="capability-note">HiveFlow 组织这些能力之间的协作规则；模型、平台接入和权限仍由各自系统负责。</p></section>
-<section class="family-band" id="why"><div class="wrap"><div class="section-top"><p class="eyebrow">从蜂巢实践中生长</p><h2>同一个起点，<br/>三个不同的问题。</h2><p>蜂巢提供工作的空间。<br/>ACDL 整理协作的方法。<br/>HiveFlow 继续追问：下一步，能否自己发生？</p></div><div class="family-grid"><a href="https://www.bluexiii.com/hive/" class="family-item"><span class="mono">起点 / PLATFORM</span><h3>蜂巢 <span>↗</span></h3><strong>Agent 在哪里工作？</strong><p>员工数字分身的平台，把对话、文件、工具与工作环境连接起来。</p></a><a href="https://www.bluexiii.com/acdl/" class="family-item"><span class="mono">第一个副产物 / METHOD</span><h3>ACDL <span>↗</span></h3><strong>人如何指挥 Agent 协作？</strong><p>以 Director 为主导，组织需求、设计、实施与验证的研发生命周期。</p></a><div class="family-item current"><span class="mono">第二个副产物 / FLOW</span><h3>HiveFlow <span>↳</span></h3><strong>流程如何自动向前衔接？</strong><p>减少每一步都由人推动的依赖，让有效授权、事实和证据承接下一阶段。</p></div></div></div></section>
-<section class="section wrap" id="process"><div class="section-top"><p class="eyebrow">从指挥，到流转</p><h2>把人的判断，<br/>放在真正需要的地方。</h2><p>目标是减少逐步催办。<br/>方向、实质变化与关键风险，<br/>仍由有权限的人决定。</p></div><div class="comparison"><article><span class="mono">ACDL / 人组织协作</span><h3>Director 串起每一个阶段</h3><div class="manual-track"><span>人</span><i>→</i><b>需求</b><i>→</i><span>人</span><i>→</i><b>实施</b><i>→</i><span>人</span></div><p>人根据任务选择流程、分配工作，推动阶段转换并核对成果。</p></article><article class="flow-vision"><span class="mono">HIVEFLOW / 探索方向</span><h3>边界确定后，由流程承接</h3><div class="auto-track"><span>目标与授权</span><i>→</i><b>调查 → 实施 → 验证</b></div><p>在同一有效范围内连续推进；遇到范围变化、权限阻断或未知结果时停下核对。</p></article></div><div class="principles"><div><span>01 / 承接事实</span><h3>先知道已经做了什么</h3><p>核对现有任务、代码与交付证据，复用已完成工作，避免重复执行。</p></div><div><span>02 / 承接授权</span><h3>一次说清，范围内推进</h3><p>完整任务覆盖已列明的步骤；实质变化再决定，不用模糊批准扩大权限。</p></div><div><span>03 / 承接证据</span><h3>以验证决定能否交付</h3><p>测试失败阻止后续交付。修改、部署和真实验收分别记录。</p></div></div><a class="text-link" href={b+'read/workflow/'}>了解两种交付方式与授权条件 →</a></section>
-<section class="section wrap" id="modes"><div class="section-top"><p class="eyebrow">先明确做到哪里</p><h2>同一套规则，<br/>两种交付终点。</h2><p>采纳是选择，授权说明范围。<br/>正常范围内连续推进，<br/>检查、审阅与人的判断仍然保留。</p></div><div class="comparison"><article><span class="mono">PR REVIEW</span><h3>PR待审</h3><p>完成开发、测试和PR后等负责人审阅，不继续合并部署，也不发送最终可用回执。</p></article><article class="flow-vision"><span class="mono">FULL DELIVERY</span><h3>完整交付</h3><p>目标、风险和环境明确后，连续完成获准的审阅、合并、部署、约定验收与记录关单，再处理原来源回执。</p></article></div><p class="capability-note">原生定时任务须先有本人批准、实际启用且有效的范围、窗口与数量。一次采纳不是自动执行许可；当前自动开发未启用，完整自动链路尚未验收。</p></section><section class="usage-section section wrap" id="guide"><div class="section-top"><p class="eyebrow">给工作群里的每个人</p><h2>像平常一样，<br/>把事情说清楚。</h2><p>在已接入并授权的工作群，选择并 @ 实际助手。<br/>不用先分清问题类型，也不用背机器编号。<br/>图中“@助手”为示意，名称以本群实际机器人为准。</p></div><div class="usage-examples"><article><span>问用法</span><p>@助手 我想把本月的记录导出来，应该从哪里操作？</p></article><article><span>报 Bug</span><p>@助手 选了整个月再点导出，文件里仍只有第一页。预期是全部结果。</p></article><article><span>提需求</span><p>@助手 每周都要手动整理记录，能不能按日期一次导出？</p></article></div><ol class="usage-steps"><li>接收回执</li><li>答疑或补问关键信息</li><li>需要改动且获准时登记</li><li>负责人评估决定</li></ol><div class="usage-bottom"><p>登记不等于采纳、排期或开工。补充信息时自然点明事项；不依赖永久记忆或原生引用自动续接。</p><a class="button primary" href={b+'read/user-guide/'}>阅读完整使用指南 ↗</a></div></section>
-<section class="state-section"><div class="wrap state-grid"><div><p class="eyebrow">愿景与现场分开说</p><h2>向自动流转演进。<br/>如实记录每一步。</h2><p>HiveFlow 目前是一套协作规范，<br/>不是已经运行的自动开发服务。</p><a class="text-link" href={b+'read/adapters/'}>查看适配能力与验证状态 →</a></div><div class="state-table"><div><span class="state-label">当前</span><h3>按有效授权分阶段推进</h3><p>已有手动交付和单次原来源回执的实践。负责人决定实施范围，合并、部署、验收和通知分别记录。</p></div><div><span class="state-label pending">未启用</span><h3>业务自动开发</h3><p>两种模式、受控记录与离线校验已定义；控制记录初始化、完整本地配置及新单认领/撤销仍待验证，不宣称全自动闭环已经跑通。</p></div><div><span class="state-label neutral">始终保留</span><h3>停止、核对与人的判断</h3><p>规范不产生权限，不绕过审批或平台限制；未知结果先查证，不盲目重放。</p></div></div></div></section>
-<section class="section wrap" id="reading"><div class="section-top"><p class="eyebrow">阅读与实践</p><h2>从一个问题，<br/>进入一套清楚的规则。</h2><p>第一次使用，先读用户指南。<br/>理解两种模式和授权条件。<br/>这里是获准公开手册的固定整理版本，<br/>不是运行环境的实时状态。</p></div><div class="book-list">{books.map(([slug,n,title,text])=><a href={b+'read/'+slug+'/'}><span class="mono">{n}</span><h3>{title}</h3><p>{text}</p><span class="book-arrow">↗</span></a>)}</div><div class="reading-foot"><a href={b+'read/overview/'}>项目概览 →</a><a href={b+'read/contributing/'}>参与维护 →</a><a href={b+'read/security/'}>安全与发布边界 →</a></div></section><section class="closing wrap"><p class="eyebrow">从协作方法，走向持续流转</p><h2>让下一步有依据，<br/>也有边界。</h2><a class="button primary" href={b+'read/workflow/'}>阅读 HiveFlow 手册 ↗</a></section></main></Shell>
+<Shell>
+  <main id="main">
+    <section class="hero wrap">
+      <div class="hero-copy">
+        <p class="eyebrow"><span></span>蜂巢的第二个副产物 / HIVEFLOW</p>
+        <h1>让协作，<br/>自己向前<span class="accent">流转。</span></h1>
+        <p class="lead">云端理解反馈，Issue交接到MacMini。<br/>人决定目标与范围，Codex承接研发，<br class="desktop"/>把有证据的结果带回。</p>
+        <div class="actions"><a class="button primary" href="#delivery">选择交付方式 <span>↓</span></a><a class="text-link" href={b+'read/overview/'}>阅读介绍手册 ↗</a></div>
+        <p class="hero-note"><span class="status-dot"></span>规范持续演进 · 当前自动开发未启用</p>
+      </div>
+      <div class="flow-board" aria-label="协作示意：云端dots调查反馈，GitHub Issue交接到MacMini，Codex按手动或定时启动，选择PR待审或完整交付。不是实时运行状态。">
+        <div class="board-title"><span>一条反馈，怎样接到下一步</span><span class="mono">HIVEFLOW / 01</span></div>
+        <div class="board-track">
+          <div><i>01</i><strong>云端dots</strong><small>理解反馈、调查、登记</small></div><span>↓</span>
+          <div><i>02</i><strong>GitHub Issue</strong><small>准确事项与事实的交接点</small></div><span>↓</span>
+          <div><i>03</i><strong>MacMini上的Codex</strong><small>在有效授权内研发与交付</small></div>
+        </div>
+        <div class="board-options"><div><small>怎样启动</small><strong>手动 / 原生定时任务</strong></div><div><small>做到哪里</small><strong>PR待审 / 完整交付</strong></div></div>
+        <div class="board-return"><span>↶</span> PR待审后由你再决定合并、部署<br/><b>完整交付在明确范围内连续推进。</b></div>
+        <p class="board-caption">流程示意 · 定时业务执行尚未启用</p>
+      </div>
+    </section>
+
+    <section class="reuse-section section wrap" id="reuse">
+      <div class="section-top"><p class="eyebrow">复用现成能力</p><h2>让不同工具，<br/>各自承接清楚的责任。</h2><p>从反馈、决定到实施和结果通知，<br/>每一段都有明确的对象与依据。</p></div>
+      <div class="capability-grid">
+        <article><span class="mono">云端 / 理解反馈</span><h3>Dots</h3><p>理解问题、调查事实，登记Issue并保留源头采纳决定。</p><small>具体模型以账号和平台支持为准。</small></article>
+        <article><span class="mono">交接 / 事实可查</span><h3>GitHub Issues</h3><p>连接准确事项、目标、候选和交付证据；登记与实施分别核验。</p><small>Issue存在不等于获得开发许可。</small></article>
+        <article><span class="mono">本机 / 研发交付</span><h3>Codex</h3><p>在Director的MacMini承接手动任务或原生定时任务，按所选终点交付。</p><small>两种启动方式，都有两种交付终点。</small></article>
+        <article><span class="mono">沟通 / 原来源回执</span><h3>企业微信与桥接</h3><p>在管理员接入并授权的工作群沟通，通过固定来源把允许的结果带回。</p><a href="https://github.com/xiiiblue/wecom-slack-bridge">wecom-slack-bridge ↗</a></article>
+      </div>
+      <p class="capability-note">工具保存、核对和传递事实，Director负责目标与授权。平台名称和消息路由本身都不授予权限。</p>
+    </section>
+
+    <section class="family-band" id="why"><div class="wrap">
+      <div class="section-top"><p class="eyebrow">从蜂巢实践中生长</p><h2>同一个起点，<br/>三个相互配合的部分。</h2><p>产品提供工作空间，<br/>工程方法组织研发，<br/>HiveFlow连接反馈与交付。</p></div>
+      <div class="family-grid">
+        <a href="https://www.bluexiii.com/hive/" class="family-item"><span class="mono">起点 / PLATFORM</span><h3>蜂巢 <span>↗</span></h3><strong>Agent在哪里工作？</strong><p>员工数字分身的平台，连接对话、文件、工具与工作环境。</p></a>
+        <a href="https://www.bluexiii.com/acdl/" class="family-item"><span class="mono">第一个副产物 / METHOD</span><h3>ACDL <span>↗</span></h3><strong>研发怎样有据可循？</strong><p>组织需求、设计、实施、评审与版本，按实际风险选择需要的工作。</p></a>
+        <div class="family-item current"><span class="mono">第二个副产物 / FLOW</span><h3>HiveFlow <span>↳</span></h3><strong>反馈怎样接到交付？</strong><p>把源头反馈、采纳与授权、本地研发和原来源回执连成可接续的过程。</p></div>
+      </div>
+    </div></section>
+
+    <section class="section wrap" id="process">
+      <div class="section-top"><p class="eyebrow">以Issue交接</p><h2>反馈在云端整理，<br/>研发在MacMini继续。</h2><p>Issue之后的本地研发，<br/>由实际任务与有效授权推进，<br/>不等待云端逐步转述指令。</p></div>
+      <div class="comparison">
+        <article><span class="mono">云端 / DOTS</span><h3>先理解，再登记</h3><p>已有权限内调查，符合条件才登记。核验真实Issue与原来源，先向反馈者说明登记结果，再按源头流程核验采纳决定。</p></article>
+        <article class="flow-vision"><span class="mono">本地 / MACMINI + CODEX</span><h3>核验事实，承接研发</h3><p>手动任务在可信执行会话核验，定时任务依据预先批准的有效配置。复用已完成的候选与检查，不为同一事项重新开发。</p></article>
+      </div>
+      <div class="principles">
+        <div><span>01 / 采纳</span><h3>值得做</h3><p>采纳记录价值判断，不能单独产生代码修改、合并或部署权限。</p></div>
+        <div><span>02 / 授权</span><h3>可以做到哪里</h3><p>一次说清目标、范围与终点，已经明确的同范围步骤连续推进。</p></div>
+        <div><span>03 / 证据</span><h3>实际完成什么</h3><p>修改、检查、合并、部署、验收与通知分别核验，不用一个状态代替全部结果。</p></div>
+      </div>
+      <a class="text-link" href={b+'read/workflow/'}>阅读从反馈到交付的完整流程 →</a>
+    </section>
+
+    <section class="delivery-section section" id="delivery"><div class="wrap">
+      <div class="section-top"><p class="eyebrow">两种启动 × 两种终点</p><h2>怎样开始，<br/>与你希望做到哪里分开选。</h2><p>手动和定时都能选择PR待审或完整交付。<br/>定时生成的PR仍然等你决定后续；<br/>完整交付减少范围内的重复确认。</p></div>
+      <div class="delivery-grid">{modes.map(mode=><article data-start={mode.start} data-delivery={mode.delivery}><p class="eyebrow">{mode.eyebrow}</p><h3>{mode.title}</h3><p>{mode.text}</p><div class="director-count">{mode.count}</div></article>)}</div>
+      <div class="delivery-note"><strong>这里统计MacMini研发阶段。</strong><p>源头采纳与定时配置授权另计。约定由你亲自验收，或遇到新的重要取舍、超出授权的问题时，按实际情况再介入。当前业务自动执行尚未启用，定时路径展示的是有效配置下的工作方式。</p><a class="text-link" href={b+'read/workflow/#9director需要介入几次'}>查看Director介入次数与条件 →</a></div>
+    </div></section>
+
+    <section class="usage-section section wrap" id="guide">
+      <div class="section-top"><p class="eyebrow">给工作群里的每个人</p><h2>像平常一样，<br/>把事情说清楚。</h2><p>在管理员接入并授权的工作群，<br/>选择并@实际助手，说明现象与期望。<br/>“@助手”是示意，名称以本群机器人为准。</p></div>
+      <div class="usage-examples"><article><span>问用法</span><p>@助手 我想把本月的记录导出来，应该从哪里操作？</p></article><article><span>报问题</span><p>@助手 选了整个月再导出，文件仍只有第一页。预期是全部结果。</p></article><article><span>提需求</span><p>@助手 每周都要手工整理记录，希望能按日期一次导出。</p></article></div>
+      <ol class="usage-steps"><li>说明场景与现象</li><li>调查或补问关键事实</li><li>符合条件时登记</li><li>负责人评估决定</li></ol>
+      <div class="usage-bottom"><p>登记不等于采纳、排期或开工。补充信息时自然点明事项，不依赖永久记忆或原生引用自动续接。</p><a class="button primary" href={b+'read/user-guide/'}>阅读完整使用指南 ↗</a></div>
+    </section>
+
+    <section class="state-section"><div class="wrap state-grid">
+      <div><p class="eyebrow">规则、实践与未知分开说</p><h2>让交付有依据，<br/>也让限制看得见。</h2><p>网站是一份固定版本的介绍，<br/>不是已经运行的自动开发服务。</p><a class="text-link" href={b+'read/acceptance/'}>查看接入与验证范围 →</a></div>
+      <div class="state-table">
+        <div><span class="state-label">已有</span><h3>规范、手动实践与离线检查</h3><p>有手动交付及单次原来源回执的实践。文档、合成演练与真实联调各自记录，不能互相代替。</p></div>
+        <div><span class="state-label pending">未启用</span><h3>业务自动开发</h3><p>原生定时模板和受控采纳方案已有定义；真实启用、认领、取消和恢复仍需对应范围的现场验证。</p></div>
+        <div><span class="state-label neutral">分别核验</span><h3>业务完成与通知结果</h3><p>合并不等于部署，部署不等于验收，平台确认不等于用户已读。未知先查原结果，不盲目重放。</p></div>
+      </div>
+    </div></section>
+
+    <section class="section wrap" id="reading">
+      <div class="section-top"><p class="eyebrow">12章正文 + 3篇附录</p><h2>从一个问题，<br/>读懂整条协作过程。</h2><p>按介绍手册连续阅读，<br/>或直接查当前关心的部分。<br/>每篇都保留对应来源。</p></div>
+      <p class="reading-intro"><a class="text-link" href={b+'read/overview/'}>先看阅读目录与推荐路线 →</a></p>
+      <div class="book-list">{books.map(book=><a href={b+'read/'+book.slug+'/'}><span class="mono">{book.number}</span><h3>{book.title}</h3><p>{summaries[book.slug]}</p><span class="book-arrow">↗</span></a>)}</div>
+      <div class="reading-foot"><a href={b+'read/group-intake/'}>反馈接收要点 →</a><a href={b+'read/security/'}>安全与隐私 →</a><a href={b+'read/agents/'}>执行前须知 →</a></div>
+    </section>
+
+    <section class="source-section wrap" id="source">
+      <p class="eyebrow">内容从哪里来</p><h2>规范 → 介绍 → 网站</h2><p>HiveOS规范保存执行规则，介绍手册解释方法与案例，本站据此整理公开内容。新规则先回到规范确认，再向下同步。</p><p class="fine">来源：HiveOS <code>{source.commit.slice(0,8)}</code> · 内容核对：{source.reviewedOn} · 上游介绍手册状态：Review</p><a class="text-link" href={b+'read/contributing/'}>查看网站取材与来源维护说明 →</a>
+    </section>
+    <section class="closing wrap"><p class="eyebrow">从反馈，到有证据的交付</p><h2>让下一步有依据，<br/>也有边界。</h2><a class="button primary" href={b+'read/overview/'}>开始阅读HiveFlow手册 ↗</a></section>
+  </main>
+</Shell>

@@ -1,7 +1,45 @@
 ---
 import Shell from './Shell.astro';
 import source from '../data/source.json';
-const {frontmatter,headings=[]}=Astro.props;const b=import.meta.env.BASE_URL;
-const links=[['user-guide','用户指南'],['overview','项目概览'],['workflow','核心流程'],['group-intake','反馈入口'],['adapters','工具适配'],['owner-commands','交互示例'],['acceptance','验收清单'],['contributing','参与维护'],['security','安全边界'],['agents','项目规则']];
+const {frontmatter,headings=[]}=Astro.props;
+const b=import.meta.env.BASE_URL;
+const chapters=source.pages.filter(page=>page.kind!=='topic');
+const topics=source.pages.filter(page=>page.kind==='topic');
 ---
-<Shell title={frontmatter.title+' · HiveFlow'}><main id="main" class="reader wrap"><aside class="sidebar"><a class="back" href={b+'#reading'}>← 返回阅读入口</a><nav aria-label="阅读章节">{links.map(([slug,name])=><a href={b+'read/'+slug+'/'} aria-current={Astro.url.pathname===b+'read/'+slug+'/'?'page':undefined}>{name}</a>)}</nav><p class="fine">固定手册快照<br/><code>{source.commit.slice(0,7)}</code><br/>以页面内容为准，不代表部署状态。</p></aside><div class="reader-body"><div class="reader-kicker">HIVEFLOW / 手册阅读</div><article class="prose"><slot/></article><div class="source-note">内容依据获准公开的 HiveOS 自动化手册整理，来源版本 <code>{source.commit.slice(0,7)}</code>。本站可独立阅读，无需访问私有仓库；此快照不代表实时运行状态，也不代替项目权威规范。</div><a class="text-link" href={b+'#reading'}>← 选择下一篇内容</a></div><aside class="toc"><strong>本页目录</strong>{headings.filter(h=>h.depth===2).map(h=><a href={'#'+h.slug}>{h.text}</a>)}</aside></main></Shell>
+<Shell title={frontmatter.title+' · HiveFlow'}>
+  <main id="main" class="reader wrap">
+    <aside class="sidebar">
+      <a class="back" href={b+'#reading'}>← 返回阅读入口</a>
+      <details class="chapter-menu" open>
+        <summary>浏览手册目录 <span aria-hidden="true">⌄</span></summary>
+        <nav aria-label="手册章节">
+          {chapters.map(page=><a href={b+'read/'+page.slug+'/'} aria-current={Astro.url.pathname===b+'read/'+page.slug+'/'?'page':undefined}><span class="chapter-number">{page.number}</span>{page.title}</a>)}
+        </nav>
+        <p class="nav-label">专题阅读</p>
+        <nav aria-label="专题阅读">
+          {topics.map(page=><a href={b+'read/'+page.slug+'/'} aria-current={Astro.url.pathname===b+'read/'+page.slug+'/'?'page':undefined}>{page.title}</a>)}
+        </nav>
+      </details>
+      <p class="fine">介绍手册公开阅读版<br/>来源 <code>{source.commit.slice(0,8)}</code><br/>内容核对：{source.reviewedOn}<br/>不代表运行环境的实时状态。</p>
+    </aside>
+    <div class="reader-body">
+      <div class="reader-kicker">HIVEFLOW / 介绍手册</div>
+      <article class="prose"><slot/></article>
+      <div class="source-note">
+        <strong>规范→介绍→网站</strong>
+        <p>本页依据HiveOS同版本介绍手册整理，规范用于核对执行边界。来源提交 <code>{source.commit.slice(0,8)}</code>，内容核对于{source.reviewedOn}；上游手册状态为Review，网站不替代执行规范。</p>
+        <a href="https://github.com/xiiiblue/flow/blob/main/src/data/handbook.md">公开目录原文 ↗</a> · <a href="https://github.com/xiiiblue/flow/blob/main/src/data/source.json">来源与章节映射 ↗</a>
+        <p>本站可独立阅读，无需访问私有仓库。已省略仓库维护元数据与本次任务记录，流程图整理为静态示意；执行规范仅作本地核对，示例不代表真实授权或已验收能力。</p>
+      </div>
+      <a class="text-link" href={b+'#reading'}>← 选择下一篇手册</a>
+    </div>
+    <aside class="toc"><strong>本页目录</strong>{headings.filter(h=>h.depth===2).map(h=><a href={'#'+h.slug}>{h.text}</a>)}</aside>
+  </main>
+</Shell>
+<script>
+  const menu=document.querySelector<HTMLDetailsElement>('.chapter-menu');
+  const mobile=matchMedia('(max-width: 720px)');
+  const sync=()=>{if(menu)menu.open=!mobile.matches;};
+  sync();
+  mobile.addEventListener('change',sync);
+</script>
