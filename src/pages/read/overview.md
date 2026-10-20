@@ -33,6 +33,8 @@ HiveFlow的唯一权威执行规范在自动化目录。本手册将规则解释
 
 独立[hive-flow仓库](https://github.com/xiiiblue/hive-flow)已于2026-10-20按[Apache-2.0](https://github.com/xiiiblue/hive-flow/blob/main/LICENSE)开源，提供规范参考副本、介绍与离线工具。公开读者不需要访问私有HiveOS即可学习和试用；业务实例的源码访问、执行授权与启用状态仍分别核验。
 
+官网源码[flow仓库](https://github.com/xiiiblue/flow)也已采用[Apache-2.0](https://github.com/xiiiblue/flow/blob/main/LICENSE)，网站实现与经授权分发的介绍材料按其LICENSE和NOTICE使用，第三方材料保留各自声明。
+
 ## 3.Issue之后：在MacMini上选择怎样启动、做到哪里
 
 蜂巢当前以GitHub Issue作为云端与本机之间的研发交接点。云端Dots（本书沿用名称dots）接收反馈、调查并登记事项；Issue创建并核验后，后续研发由Director的MacMini上的Codex承接。源头的采纳评审仍记录其真实决定，本地执行则按实际手动授权或原生定时配置推进，不由云端dots逐步派发。

@@ -31,6 +31,8 @@ HiveFlow的唯一权威执行规范在[自动化目录](../../06-自动化/READM
 
 独立[hive-flow仓库](https://github.com/xiiiblue/hive-flow)已于2026-10-20按[Apache-2.0](https://github.com/xiiiblue/hive-flow/blob/main/LICENSE)开源，提供规范参考副本、介绍与离线工具。公开读者不需要访问私有HiveOS即可学习和试用；业务实例的源码访问、执行授权与启用状态仍分别核验。
 
+官网源码[flow仓库](https://github.com/xiiiblue/flow)也已采用[Apache-2.0](https://github.com/xiiiblue/flow/blob/main/LICENSE)，网站实现与经授权分发的介绍材料按其LICENSE和NOTICE使用，第三方材料保留各自声明。
+
 内容依赖为**HiveFlow规范→HiveFlow介绍→HiveFlow网站**，维护规则由[HFL-016](../../06-自动化/HFL-016-文档维护规则.md#规范介绍与网站的依赖顺序)定义。规范改变时，先确认正式规则，再同步手册和网站。网站介绍不反过来授权真实操作，也不能替代项目当前记录。具体取材范围、章节映射和来源版本要求见[附录C](15-附录C：网站取材与内容维护.md)。
 
 ## 3.Issue之后：在MacMini上选择怎样启动、做到哪里
