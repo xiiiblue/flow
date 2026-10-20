@@ -26,6 +26,8 @@ source: "docs/11-手册/05-自动化手册/15-附录C：网站取材与内容维
 
 [展示网站](https://www.bluexiii.com/flow/)由独立[flow仓库](https://github.com/xiiiblue/flow)维护。它帮助读者理解方法、场景和接入条件，不是群机器人、任务调度器或业务操作入口。
 
+独立[hive-flow仓库](https://github.com/xiiiblue/hive-flow)已按[Apache-2.0](https://github.com/xiiiblue/hive-flow/blob/main/LICENSE)开源，供读者取得规范参考版、介绍和离线工具。网站源码仓库flow与项目仓库hive-flow分开维护；项目许可不自动覆盖网站全部代码或私有HiveOS未分发的材料。
+
 网站不因展示了“完整交付”就已经具备执行权限，也不因介绍了原生自动化就证明真实链路已启用。公开内容应同时讲清方法、现有实践和未验收范围。
 
 面向公众的叙述可以使用本书的合成案例。实际群身份、私有决定、环境配置、凭据、内部运行标识及完整日志不属于网站素材。源文档可以引用规范解释边界，网站应按公开范围提供可访问的说明，不能把私有文档整包导出。

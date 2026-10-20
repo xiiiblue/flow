@@ -1,6 +1,6 @@
 {
   "repository": "xiiiblue/hive-os",
-  "commit": "4d4f9090aeac6638c424c39d2abbed5ce6183979",
+  "commit": "a3e7c38a12b26c2b19a8a687c169c778e1bbe4f6",
   "reviewedOn": "2026-10-20",
   "handbookRoot": "docs/11-手册/05-自动化手册",
   "normativeRoot": "docs/06-自动化",
@@ -25,8 +25,8 @@
     "docs/11-手册/05-自动化手册/12-接入与验证：从离线演练到真实使用.md": "58fbd48e40cd5115c7a1fc761d13ac43ff525295e88e7ec3c763e76407aac848",
     "docs/11-手册/05-自动化手册/13-附录A：术语、状态和常见问题.md": "4d9b36c606cb31ade5f18927a5ee33fb1d74fdabcd8c83ccfb587bf3ed3a5ba9",
     "docs/11-手册/05-自动化手册/14-附录B：完整案例与对话示例.md": "0b0660688425719e766d18758465f7dfb530bf5ccf9da7c916950af0d7fe2364",
-    "docs/11-手册/05-自动化手册/15-附录C：网站取材与内容维护.md": "a3e247bbf682f1c307fc66b1b441fdc47bfbcfc5eb19d5e90ef8adcead62ee1e",
-    "docs/11-手册/05-自动化手册/README.md": "8fa8d6ca7786685bec700e04f4dbf01defc4714f30a77f9fc6083ab07076585b"
+    "docs/11-手册/05-自动化手册/15-附录C：网站取材与内容维护.md": "941deeb3f90fc2aba99aa6a856cd735f21e58762c02f33b8055116d99efd496e",
+    "docs/11-手册/05-自动化手册/README.md": "232045fb6d8059c01b74d221961edb0f7611f41f08453a6ead5d89d6752e7c91"
   },
   "pages": [
     {
@@ -187,5 +187,10 @@
     "HFL-016",
     "HFL-017",
     "HFL-019"
-  ]
+  ],
+  "publicProject": {
+    "repository": "xiiiblue/hive-flow",
+    "license": "Apache-2.0",
+    "licenseUrl": "https://github.com/xiiiblue/hive-flow/blob/main/LICENSE"
+  }
 }

@@ -22,6 +22,7 @@ test('complete handbook and existing public reading addresses are built',()=>{
 
 test('source manifest ties every reading page to the same HiveOS handbook and rules',()=>{
   assert.equal(source.repository,'xiiiblue/hive-os');
+  assert.deepEqual(source.publicProject,{repository:'xiiiblue/hive-flow',license:'Apache-2.0',licenseUrl:'https://github.com/xiiiblue/hive-flow/blob/main/LICENSE'});
   assert.match(source.commit,/^[0-9a-f]{40}$/);
   assert.deepEqual(source.dependencyOrder,['HiveFlow规范','HiveFlow介绍','HiveFlow网站']);
   assert.equal(new Set(source.pages.map(p=>p.slug)).size,source.pages.length);
@@ -91,7 +92,8 @@ test('published payload excludes private runtime material and retired authority'
     const value=readFileSync(file,'utf8');
     assert(!/(?:xox[baprs]-[A-Za-z0-9-]+|gh[pousr]_[A-Za-z0-9]+|\/Users\/|192\.168\.\d+\.\d+|BEGIN (?:RSA |OPENSSH )?PRIVATE KEY)/.test(value),relative(root,file));
     assert(!/(?:wecom-intake:|source_request_id|chat_id|\.hiveflow\/control\/slot\.json)/.test(value),relative(root,file));
-    assert(!value.includes('github.com/xiiiblue/hive-flow/'),relative(root,file));
+    // 公开项目的准确LICENSE链接是许可说明，其他旧仓库文件入口仍不作为网页执行依据。
+    for(const [url] of value.matchAll(/https:\/\/github\.com\/xiiiblue\/hive-flow\/(?:blob|raw|tree)\/[^\s"'<>]+/g))assert.equal(url,source.publicProject.licenseUrl,relative(root,file));
     assert(!/https:\/\/github\.com\/xiiiblue\/hive-os\/(?:blob|issues|pull|actions)/.test(value),relative(root,file));
     assert(!value.includes('负责人评审、授权与私有结果统一在'),relative(root,file));
     assert(!value.includes('language-mermaid'),relative(root,file));
