@@ -24,7 +24,7 @@ test('source manifest ties every reading page to the same HiveOS handbook and ru
   assert.equal(source.repository,'xiiiblue/hive-os');
   assert.deepEqual(source.publicProject,{repository:'xiiiblue/hive-flow',license:'Apache-2.0',licenseUrl:'https://github.com/xiiiblue/hive-flow/blob/main/LICENSE'});
   assert.match(source.commit,/^[0-9a-f]{40}$/);
-  assert.deepEqual(source.dependencyOrder,['HiveFlow规范','HiveFlow介绍','HiveFlow网站']);
+  assert.deepEqual(source.dependencyOrder,['HiveFlow规范','HiveFlow介绍','HiveFlow网站','独立hive-flow仓库']);
   assert.equal(new Set(source.pages.map(p=>p.slug)).size,source.pages.length);
   const chapters=source.pages.filter(p=>p.kind==='chapter');
   assert.deepEqual(chapters.map(p=>p.number),Array.from({length:15},(_,i)=>String(i+1).padStart(2,'0')));
@@ -36,7 +36,7 @@ test('source manifest ties every reading page to the same HiveOS handbook and ru
   assert(source.normativeChecks.includes('HFL-016'));
   assert.equal(source.snapshotSource,source.handbookRoot+'/README.md');
   const snapshot=readFileSync(source.snapshot);
-  assert.equal(createHash('sha256').update(snapshot).digest('hex'),source.files[source.snapshotSource]);
+  assert.equal(createHash('sha256').update(snapshot).digest('hex'),source.snapshotSHA256);
   for(const page of source.pages){
     for(const path of page.sources||[page.source])assert(source.files[path],path);
     assert(page.source.startsWith(source.handbookRoot+'/'));
@@ -81,7 +81,7 @@ test('homepage separates startup choice, delivery endpoint and Director involvem
     assert(copy.includes('合并、部署'));
     assert(!copy.includes('无需你再介入'));
   }
-  for(const value of ['第二个副产物','Director','MacMini','自动开发未启用','不是已经运行的自动开发服务','源头采纳与定时配置授权另计','规范 → 介绍 → 网站','GitHub Issues','wecom-slack-bridge','管理员接入并授权的工作群','https://www.bluexiii.com/hive/','https://www.bluexiii.com/acdl/'])assert(html.includes(value),value);
+  for(const value of ['第二个副产物','Director','MacMini','自动开发未启用','不是已经运行的自动开发服务','源头采纳与定时配置授权另计','规范 → 介绍 → 网站','GitHub Issues','Hermes','Webhook','2.0','双机','管理员接入并授权的工作群','https://www.bluexiii.com/hive/','https://www.bluexiii.com/acdl/'])assert(html.includes(value),value);
   assert(!html.includes('Director 串起每一个阶段'));
   assert(!html.includes('canonical'),'No unverified publication canonical');
 });
@@ -127,4 +127,25 @@ test('shared footer retains the verified counter contract with no invented total
     assert(html.includes("location.hostname === 'www.bluexiii.com'"));
     assert(!html.includes('cloudflareinsights'));
   }
+});
+
+ test('2.0 keeps current roles, evidence limits and safe source presentation',()=>{
+  assert.equal(source.edition,'2.0');
+  for(const slug of ['overview','adapters','workflow','acceptance']){
+    const value=text(readFileSync(resolve(root,'read',slug,'index.html'),'utf8'));
+    assert(value.includes('Hermes')); assert(value.includes('MacMini'));
+  }
+  const all=pages.map(p=>readFileSync(p,'utf8')).join('\n');
+  for(const retired of ['云端dots负责','企微审批关闭','新交付默认在原任务范围内，通过既有HTTP','PR→Hermes'])assert(!all.includes(retired),retired);
+  assert(!/(?:203|51\.8)(?:上的|开发环境|的Codex)/.test(all));
+  const acceptance=text(readFileSync(resolve(root,'read/acceptance/index.html'),'utf8'));
+  for(const limitation of ['身份','跨天','长任务','接棒','旧Dots云端任务启停未知'])assert(acceptance.includes(limitation),limitation);
+});
+
+test('public editing preserves dialogue examples while removing only front matter',()=>{
+  const example=readFileSync(resolve(root,'read/owner-commands/index.html'),'utf8');
+  assert(example.includes('<blockquote>'));
+  for(const content of ['我筛选后看到37条结果','采纳。','按PR待审模式处理Issue#42','按完整交付模式处理Issue#42'])assert(text(example).includes(content),content);
+  assert(!text(example).includes('本文负责：'));
+  assert(!pages.some(p=>readFileSync(p,'utf8').includes('示例开发环境开发环境')));
 });

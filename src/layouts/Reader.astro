@@ -23,12 +23,12 @@ const topics=source.pages.filter(page=>page.kind==='topic');
       <p class="fine">介绍手册公开阅读版<br/>来源 <code>{source.commit.slice(0,8)}</code><br/>内容核对：{source.reviewedOn}<br/>不代表运行环境的实时状态。</p>
     </aside>
     <div class="reader-body">
-      <div class="reader-kicker">HIVEFLOW / 介绍手册</div>
+      <div class="reader-kicker">HIVEFLOW 2.0 / 介绍手册</div>
       <article class="prose"><slot/></article>
       <div class="source-note">
-        <strong>规范→介绍→网站</strong>
+        <strong>规范→介绍→网站→独立副本</strong>
         <p>本页依据HiveOS同版本介绍手册整理，规范用于核对执行边界。来源提交 <code>{source.commit.slice(0,8)}</code>，内容核对于{source.reviewedOn}；上游手册状态为Review，网站不替代执行规范。</p>
-        <a href="https://github.com/xiiiblue/flow/blob/main/src/data/handbook.md">公开目录原文 ↗</a> · <a href="https://github.com/xiiiblue/flow/blob/main/src/data/source.json">来源与章节映射 ↗</a>
+        <a href="https://github.com/xiiiblue/flow/blob/main/src/data/handbook.md">公开目录整理稿 ↗</a> · <a href="https://github.com/xiiiblue/flow/blob/main/src/data/source.json">来源与章节映射 ↗</a>
         <p>本站可独立阅读，无需访问私有仓库。已省略仓库维护元数据与本次任务记录，流程图整理为静态示意；执行规范仅作本地核对，示例不代表真实授权或已验收能力。</p>
       </div>
       <a class="text-link" href={b+'#reading'}>← 选择下一篇手册</a>
