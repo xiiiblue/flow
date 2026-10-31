@@ -11,7 +11,7 @@ const summaries={
   status:'评审、处理进度、正式登记与交付事实各自表达。',
   delivery:'选择停在PR待审，或在授权内完成约定交付。',
   receipts:'交付记录怎样对应原反馈者，通知未知时怎样处理。',
-  automation:'在对应宿主准备有界定时配置，核对选单与启用条件。',
+  automation:'Hermes怎样逐单调度远程Codex、跟踪长任务并按条件停止。',
   adoption:'受控决定怎样生产、认领、取消和恢复。',
   recovery:'核对版本、只读调查、保护隐私并接续未知结果。',
   acceptance:'分清文档、合成演练和现场证据，不夸大已经具备的能力。',
@@ -23,8 +23,8 @@ const books=source.pages.filter(page=>page.kind==='chapter');
 const modes=[
  {start:'manual',delivery:'pr_review',eyebrow:'手动启动 / PR待审',title:'先交给你看，再决定后续',text:'你直接协同MacMini，或通过已认证企微请求交给远程Codex。完成开发、检查与PR后停止，等待你决定并推进合并、部署。',count:'本地介入：启动1次，PR后再1次。'},
  {start:'manual',delivery:'full_delivery',eyebrow:'手动启动 / 完整交付',title:'一次授权，推进到约定交付',text:'你明确目标、范围、环境与验收。Codex在有效授权内连续完成必要审阅、修正、合并、部署、验收和收尾。',count:'本地介入：完整授权1次，正常路径接收结果。'},
- {start:'scheduled',delivery:'pr_review',eyebrow:'定时启动 / PR待审',title:'原生定时准备候选',text:'先批准并实际启用有界配置，对应宿主的任务才可定时选单。每单完成PR后，仍需你再介入一次处理合并、部署。',count:'本地介入：无需逐单发起，PR后介入1次。'},
- {start:'scheduled',delivery:'full_delivery',eyebrow:'定时启动 / 完整交付',title:'有效配置内，连续完成交付',text:'对应宿主的任务核验配置、事项与已有工作，满足选单及所需认领条件后，连续完成规定审阅、合并、部署与验收。',count:'本地介入：无需逐单发起或例行确认。'},
+ {start:'scheduled',delivery:'pr_review',eyebrow:'定时启动 / PR待审',title:'Hermes逐单准备候选',text:'先批准并实际启用有界配置，由远程Hermes统一选单和跟踪。每单完成PR后，仍需你再介入一次处理合并、部署。',count:'本地介入：无需逐单发起，PR后介入1次。'},
+ {start:'scheduled',delivery:'full_delivery',eyebrow:'定时启动 / 完整交付',title:'有效配置内，连续完成交付',text:'Hermes核验配置、事项与已有工作，逐单安排远程Codex完成规定审阅、合并、部署与验收；达到窗口或数量上限后停止接新单。',count:'本地介入：无需逐单发起或例行确认。'},
 ];
 ---
 <Shell>
@@ -33,7 +33,7 @@ const modes=[
       <div class="hero-copy">
         <p class="eyebrow"><span></span>蜂巢的第二个副产物 / HIVEFLOW 2.0</p>
         <h1>让协作，<br/>自己向前<span class="accent">流转。</span></h1>
-        <p class="lead">Hermes理解反馈，两处Codex承接研发。<br/>人决定目标与范围，Codex承接研发，<br class="desktop"/>把有证据的结果带回。</p>
+        <p class="lead">Hermes调度远程，MacMini直接协同。<br/>人决定目标与范围，Codex承接研发，<br class="desktop"/>把有证据的结果带回。</p>
         <div class="actions"><a class="button primary" href="#delivery">选择交付方式 <span>↓</span></a><a class="text-link" href={b+'read/overview/'}>阅读介绍手册 ↗</a></div>
         <p class="hero-note"><span class="status-dot"></span>2.0规范与工具已更新 · 周期自动开发未启用</p>
       </div>
@@ -44,7 +44,7 @@ const modes=[
           <div><i>02</i><strong>GitHub Issue</strong><small>准确事项与事实的交接点</small></div><span>↓</span>
           <div><i>03</i><strong>双机Codex</strong><small>远程由Hermes协调 · MacMini由本人控制</small></div>
         </div>
-        <div class="board-options"><div><small>怎样启动</small><strong>手动 / 原生定时任务</strong></div><div><small>做到哪里</small><strong>PR待审 / 完整交付</strong></div></div>
+        <div class="board-options"><div><small>怎样启动</small><strong>手动 / Hermes原生调度</strong></div><div><small>做到哪里</small><strong>PR待审 / 完整交付</strong></div></div>
         <div class="board-return"><span>↶</span> PR待审后由你再决定合并、部署<br/><b>完整交付在明确范围内连续推进。</b></div>
         <p class="board-caption">流程示意 · 定时业务执行尚未启用</p>
       </div>
@@ -53,7 +53,7 @@ const modes=[
     <section class="reuse-section section wrap" id="reuse">
       <div class="section-top"><p class="eyebrow">复用现成能力</p><h2>让不同工具，<br/>各自承接清楚的责任。</h2><p>从反馈、决定到实施和结果通知，<br/>每一段都有明确的对象与依据。</p></div>
       <div class="capability-grid">
-        <article><span class="mono">企微 / 理解反馈</span><h3>Hermes</h3><p>理解问题、调查事实，登记Issue并保留源头采纳决定。</p><small>只协调远程开发机，不调度MacMini。</small></article>
+        <article><span class="mono">企微 / 理解反馈</span><h3>Hermes</h3><p>理解问题、调查登记，在有效范围内逐单安排远程Codex并跟踪结果。</p><small>只协调远程开发机，不调度MacMini。</small></article>
         <article><span class="mono">交接 / 事实可查</span><h3>GitHub Issues</h3><p>连接准确事项、目标、候选和交付证据；登记与实施分别核验。</p><small>Issue存在不等于获得开发许可。</small></article>
         <article><span class="mono">双机 / 研发交付</span><h3>Codex</h3><p>远程Codex承接Hermes获准任务，MacMini由Director直接协同；写入前核对共享占用。</p><small>两种启动方式，都有两种交付终点。</small></article>
         <article><span class="mono">沟通 / 原来源回执</span><h3>企微与Webhook</h3><p>在管理员接入并授权的工作群沟通，通过准确原群的获准Webhook回传正式结果。</p><a href={b+'read/receipts/'}>答疑、回执与未知恢复 →</a></article>
@@ -113,7 +113,7 @@ const modes=[
       <div class="reading-foot"><a href={b+'read/group-intake/'}>反馈接收要点 →</a><a href={b+'read/security/'}>安全与隐私 →</a><a href={b+'read/agents/'}>执行前须知 →</a></div>
     </section>
 
-    <section class="source-section wrap" id="version"><p class="eyebrow">2.0版本说明</p><h2>从云端Dots，走向Hermes与双机协作。</h2><p>正式回执采用获准原群Webhook；共享记录支持占用、接棒与结果核对。本轮修复只收尾任务被恢复为研发、未知收尾直接标为完成的缺陷，并同步当前与历史协议边界。</p><p>2.0表示规范与工具这一代更新，不改变已有数据schema，不代表无人值守服务已验收。身份隔离、持久防重复建单、长任务、跨天恢复、两机现场接棒与周期研发仍待验证。</p><a class="text-link" href={b+'read/acceptance/'}>查看已验证与待验收范围 →</a></section>
+    <section class="source-section wrap" id="version"><p class="eyebrow">2.0版本说明</p><h2>从云端Dots，走向Hermes与双机协作。</h2><p>自动研发迁向远程，由Hermes统一调度；MacMini保留本人直接协同。两种交付终点共用一个入口，每轮一单，补齐长任务跟踪、运行窗口、待审上限与停止规则。</p><p>2.0表示规范与工具这一代更新，不改变已有数据schema，不代表无人值守服务已验收。身份隔离、持久防重复建单、启动未知、长任务重启、完成事件与连续多轮仍待现场验证；新会话接管旧单仍须本人明确继续。</p><a class="text-link" href={b+'read/acceptance/'}>查看已验证与待验收范围 →</a></section>
     <section class="source-section wrap" id="source">
       <p class="eyebrow">内容从哪里来</p><h2>规范 → 介绍 → 网站 → 独立副本</h2><p>HiveOS规范保存执行规则，介绍手册解释方法与案例，本站据此整理公开内容。新规则先回到规范确认，再向下同步；网站与独立副本固定同一HiveOS提交。</p><p>独立项目<a href="https://github.com/xiiiblue/hive-flow">hive-flow</a>已按<a href={source.publicProject.licenseUrl}>Apache-2.0</a>开源，提供规范参考版、介绍与离线工具。<a href="https://github.com/xiiiblue/flow/blob/main/LICENSE">官网源码flow同样采用Apache-2.0</a>，两仓各自保留LICENSE与NOTICE。HiveOS主仓库仍为私有，公开不授予真实业务访问或执行权限。</p><p class="fine">来源：HiveOS <code>{source.commit.slice(0,8)}</code> · 内容核对：{source.reviewedOn} · 上游介绍手册状态：Review</p><a class="text-link" href={b+'read/contributing/'}>查看网站取材与来源维护说明 →</a>
     </section>

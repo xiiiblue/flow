@@ -1,6 +1,6 @@
 {
   "repository": "xiiiblue/hive-os",
-  "commit": "91cb6a7faee207456f3437620957da08bbc84f79",
+  "commit": "65cfb248fd2fdd4b26cc6ce9d70ae575060ae041",
   "reviewedOn": "2026-10-31",
   "handbookRoot": "docs/11-手册/05-自动化手册",
   "normativeRoot": "docs/06-自动化",
@@ -12,21 +12,21 @@
   ],
   "editorialPolicy": "从固定提交整理公开介绍；规范仅本地核对。环境简称通用化、私有链接改说明、图示转静态流程；snapshotSHA256记录公开目录整理稿，files保存源文件原始摘要。",
   "files": {
-    "docs/11-手册/05-自动化手册/README.md": "ce11cfd854e4bd6e1357dca29e5502fe4e41b08e3da886995ff3ae4e6ef48797",
+    "docs/11-手册/05-自动化手册/README.md": "d3dcc0e27f5ea9b2a7a9a13fb367dbebea7edae1af027ec2818338bfabd46ddd",
     "docs/11-手册/05-自动化手册/01-认识HiveFlow：把反馈、决定和交付连起来.md": "bb268f1bcce90634352c2eedc257fbb51a6f4fac63147310421d6e3bf4b25aad",
-    "docs/11-手册/05-自动化手册/02-角色与工具：每个参与者负责什么.md": "e8ed4a8b5b09a20ef317296c858fdc217922ff8dd481f2c3aed1f08f7dc8705b",
-    "docs/11-手册/05-自动化手册/03-流程总览：一条反馈怎样走到交付.md": "72201fc1075c4af0d262027b81275cfcbbe85d93d4a3a010c80d519445c85bac",
+    "docs/11-手册/05-自动化手册/02-角色与工具：每个参与者负责什么.md": "7ec0f55d337e94573b2acdd32ca7cf080e8455108f3ee7db3086d155069c2856",
+    "docs/11-手册/05-自动化手册/03-流程总览：一条反馈怎样走到交付.md": "51a98dff19f7e1ec7ba12993a9865174e097ddde2372b950c86f90b35e0b800e",
     "docs/11-手册/05-自动化手册/04-群里反馈：怎样提问、调查和登记.md": "35d8362d3d76083c946d0e15f128fccfae72f688537fc5f198b1e9bcc2a04b0e",
     "docs/11-手册/05-自动化手册/05-采纳与授权：把值得做和可以做分开.md": "f9a71c6dcbeb0a5df1ff459f07a457be064b03a5418d5a6fab90c013e53ab8e8",
     "docs/11-手册/05-自动化手册/06-事项状态：评审、进度和正式登记.md": "d1c1470e9186054e9b4b888808ebfb01042597a0e27aa99a487c31e8a59f8e72",
     "docs/11-手册/05-自动化手册/07-手动研发：选择PR待审或完整交付.md": "8fa0c004c7f003bcbb86072d7a5b125c33c4d4a43ce1e10942013138df59fc26",
     "docs/11-手册/05-自动化手册/08-交付与回执：把结果带回原反馈者.md": "c9e40d576abff0bfacb1c2fe479e98d8c9fa4b675e06d07513bbaae97e4bdc9f",
-    "docs/11-手册/05-自动化手册/09-原生自动化：先配置范围，再选择新事项.md": "2bbd3edae3d28bcb053b2c23269122fc488b7563adf19d6e720a1f01ed6236ae",
+    "docs/11-手册/05-自动化手册/09-原生自动化：先配置范围，再选择新事项.md": "600d311d48f35e7be7b0b57b7923d7e60b031772f025cd3b1c3e4356673e35d5",
     "docs/11-手册/05-自动化手册/10-采纳交接：记录、认领、撤销和恢复.md": "bb7ac04f2269b1a27d41ec1b335a981d83fbe9ca1655cc3d3f5b8444aa52a270",
     "docs/11-手册/05-自动化手册/11-调查与恢复：依据、隐私和未知结果.md": "3c1c53fb672dc5329c4349bdf394a3dc8f49147a5fed70a58f215b47f6bda35f",
-    "docs/11-手册/05-自动化手册/12-接入与验证：从离线演练到真实使用.md": "df5bebe43935636095ea7fb48c0d6ed94b08a0ae554e09820fcafc4dd7c1bec5",
-    "docs/11-手册/05-自动化手册/13-附录A：术语、状态和常见问题.md": "caa03dadb522fb364eea3b628c4b1783ccbe673e18aaeac39e9a16e7b9393fe9",
-    "docs/11-手册/05-自动化手册/14-附录B：完整案例与对话示例.md": "f559bdaf309546823638e15da74dc94088c7eb1cd2d80b86babc7c3208df0c27",
+    "docs/11-手册/05-自动化手册/12-接入与验证：从离线演练到真实使用.md": "a1b4336510cd5521ea513aff7a9a8d25255d935361376f7b403cf54d23c61fa4",
+    "docs/11-手册/05-自动化手册/13-附录A：术语、状态和常见问题.md": "4a30dd9279a6cad31bc8faa4a4e704216d378e8427a89ad677acbe9143d3a2d7",
+    "docs/11-手册/05-自动化手册/14-附录B：完整案例与对话示例.md": "cd5710b884b4dd6883dce54ef08894e447e3701902d824fdd0ed4c880544ac72",
     "docs/11-手册/05-自动化手册/15-附录C：网站取材与内容维护.md": "06e4143769b6f77c32745111d9e32d3ceb5890d25d8e3ecdc33b4dcee6c1d5d7"
   },
   "pages": [
@@ -199,6 +199,6 @@
     "license": "Apache-2.0",
     "licenseUrl": "https://github.com/xiiiblue/hive-flow/blob/main/LICENSE"
   },
-  "snapshotSHA256": "6a00c7af17ba2ae859f36e76dd4c3db9d597935c51790c40a7b0bac49a20f3d4",
+  "snapshotSHA256": "bdd795e6c32eb60122a4a2a408c9deaa65467706257052a49eacc646d622d763",
   "edition": "2.0"
 }

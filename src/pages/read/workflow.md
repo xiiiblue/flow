@@ -14,9 +14,9 @@ source: "docs/11-手册/05-自动化手册/03-流程总览：一条反馈怎样�
 
 在实际执行入口，先区分怎样启动，再区分做到哪里。手动发起和原生定时任务，都可以停在PR待审，也都可以选择完整交付。下面突出这两组选择；源头采纳与授权条件在第4、5节说明。
 
-<div class="article-flow" aria-label="协作流程说明"><div><strong>反馈与调查</strong><p>咨询直接答复，符合条件才登记</p></div><div><strong>明确授权</strong><p>Issue是交接点，采纳不等于开工</p></div><div><strong>两处Codex</strong><p>先核对占用，手动或有效定时配置启动</p></div><div><strong>两个终点</strong><p>PR待审或完整交付，通知结果另记</p></div></div>
+<div class="article-flow" aria-label="协作流程说明"><div><strong>反馈与调查</strong><p>咨询直接答复，符合条件才登记</p></div><div><strong>明确授权</strong><p>Issue是交接点，采纳不等于开工</p></div><div><strong>手动与远程调度</strong><p>MacMini直接协同，Hermes逐单安排远程Codex</p></div><div><strong>两个终点</strong><p>PR待审或完整交付，通知结果另记</p></div></div>
 
-图中定时路径尚未启用。Issue是交接依据，不是执行许可；未授权、暂缓、不采纳或条件不满足时，不会沿箭头自动进入研发。Hermes只协调远程开发机，MacMini由Director直接协同。
+图中定时路径尚未启用。Issue是交接依据，不是执行许可；未授权、暂缓、不采纳或条件不满足时，不会沿箭头自动进入研发。自动研发由Hermes统一调度远程开发机，MacMini由Director直接协同；两种终点共用一个调度入口。
 
 ## 2.先调查，不急着给现象贴结论
 
@@ -103,6 +103,6 @@ PR待审之后的再次介入，可以是Director自己合并、部署，也可�
 - HFL-003：从反馈到实施与验收
 - HFL-004：调查、登记与原群答复
 - HFL-006：来源、完成记录与通知
-- HFL-009：本机原生定时任务与两种终点
+- HFL-009：Hermes远程调度与两种终点
 
 [返回目录](/flow/read/overview/)｜[上一篇：角色与工具：每个参与者负责什么](/flow/read/adapters/)｜[下一篇：群里反馈：怎样提问、调查和登记](/flow/read/user-guide/)

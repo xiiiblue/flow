@@ -1,6 +1,6 @@
 ---
 import '../styles/site.css';
-const {title='HiveFlow · 让协作向前流转',description='从云端反馈到MacMini研发：手动或定时启动，选择PR待审或完整交付，让决定、授权和交付结果连起来。'}=Astro.props;
+const {title='HiveFlow · 让协作向前流转',description='Hermes统一调度远程Codex，MacMini保留本人直接协同；选择PR待审或完整交付，按真实证据跟踪结果。'}=Astro.props;
 const base=import.meta.env.BASE_URL;
 ---
 <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#087e78"/><title>{title}</title><link rel="icon" href={base+'favicon.svg'} type="image/svg+xml"/><script is:inline>try{if(localStorage.getItem('flow-theme')==='dark')document.documentElement.dataset.theme='dark'}catch{}</script></head><body><a class="skip" href="#main">跳到正文</a><header><div class="wrap header-inner"><a class="brand" href={base}><span class="logo" aria-hidden="true">↳</span>HiveFlow<span class="brand-note">源自蜂巢</span></a><nav aria-label="主导航"><a href={base+'#delivery'}>交付方式</a><a href={base+'read/user-guide/'}>使用指南</a><a href={base+'#reading'}>阅读手册</a><button id="theme" aria-label="切换明暗主题" aria-pressed="false">◐</button></nav></div></header><slot/><footer class="wrap site-footer">

@@ -22,7 +22,7 @@ source: "docs/11-手册/05-自动化手册/04-群里反馈：怎样提问、调�
 
 ## Issue之后由两处Codex承接研发
 
-Hermes负责企微调查与登记，并可协调远程开发机Codex；MacMini由Director直接协同，不受Hermes调度。手动和本机定时任务都可以选择[PR待审或完整交付](/flow/read/delivery/)，先核对共享占用和已有成果。
+Hermes负责企微调查与登记，并可协调远程开发机Codex；MacMini由Director直接协同，不受Hermes调度。手动请求和远程Hermes调度都可以选择[PR待审或完整交付](/flow/read/delivery/)，先核对共享占用和已有成果。
 
 PR待审完成后，Director还需决定并推进合并、部署；完整交付在有效完整授权内连续推进。定时配置尚未启用业务执行，Issue存在或显示已采纳都不能单独开工。
 

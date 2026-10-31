@@ -28,7 +28,7 @@ def main():
     mapping = {p['source']: p['slug'] for p in source['pages'] if p['kind'] != 'topic'}
     flow = {
         'adapters': [('QueenBee与Hermes', '调查、登记与采纳沟通'), ('远程开发机Codex', 'Hermes只协调该机获准任务'), ('MacMini Codex', 'Director直接协同，不受Hermes指导'), ('GitHub与Webhook', '共享事实，按准确受众回执')],
-        'workflow': [('反馈与调查', '咨询直接答复，符合条件才登记'), ('明确授权', 'Issue是交接点，采纳不等于开工'), ('两处Codex', '先核对占用，手动或有效定时配置启动'), ('两个终点', 'PR待审或完整交付，通知结果另记')],
+        'workflow': [('反馈与调查', '咨询直接答复，符合条件才登记'), ('明确授权', 'Issue是交接点，采纳不等于开工'), ('手动与远程调度', 'MacMini直接协同，Hermes逐单安排远程Codex'), ('两个终点', 'PR待审或完整交付，通知结果另记')],
         'receipts': [('核验阶段事实', '核对原来源、用途和获准Webhook'), ('读取原通知账', '沿用稳定编号，确认没有未知尝试'), ('提交一次', '先持久记录，再发送已审阅摘要'), ('按结果继续', '平台已接受则复用，未知或缺账停止')],
     }
     def public(text):
