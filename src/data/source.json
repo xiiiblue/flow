@@ -10,7 +10,7 @@
     "HiveFlow网站",
     "独立hive-flow仓库"
   ],
-  "editorialPolicy": "从固定提交整理公开介绍；规范仅本地核对。环境简称通用化、私有链接改说明、图示转静态流程；snapshotSHA256记录公开目录整理稿，files保存源文件原始摘要。",
+  "editorialPolicy": "从固定提交整理公开介绍；规范仅本地核对。环境简称通用化、私有链接改说明、图示转静态流程；snapshotSHA256记录公开目录整理稿，files保存源文件原始摘要。首页和入门页按新读者的问题改写，详细运行规则供按需查阅；网站维护说明单列，不作为入门章节。改写不改变来源提交、原始摘要或业务规则。",
   "files": {
     "docs/11-手册/05-自动化手册/README.md": "d3dcc0e27f5ea9b2a7a9a13fb367dbebea7edae1af027ec2818338bfabd46ddd",
     "docs/11-手册/05-自动化手册/01-认识HiveFlow：把反馈、决定和交付连起来.md": "bb268f1bcce90634352c2eedc257fbb51a6f4fac63147310421d6e3bf4b25aad",
@@ -137,7 +137,7 @@
     },
     {
       "slug": "contributing",
-      "title": "网站取材与维护",
+      "title": "内容来源与网站维护",
       "number": "15",
       "source": "docs/11-手册/05-自动化手册/15-附录C：网站取材与内容维护.md",
       "kind": "chapter"

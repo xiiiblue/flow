@@ -11,6 +11,7 @@ page.on('response',r=>{if(r.status()>=400)failures.push([r.status(),r.url()])});
 await mkdir('.verification',{recursive:true});
 const routes=['',...source.pages.map(p=>'read/'+p.slug+'/')];
 const widths=[320,390,768,1440];
+const captureNames={'':'home','read/workflow/':'reader','read/user-guide/':'guide','read/overview/':'overview','read/introduction/':'introduction','read/adapters/':'adapters','read/owner-commands/':'example','read/contributing/':'maintenance'};
 const openMenu=async()=>{if(!await page.locator('.chapter-menu').evaluate(el=>el.open))await page.locator('.chapter-menu summary').click();};
 try{
   for(const width of widths){
@@ -23,8 +24,8 @@ try{
         assert.equal(await page.locator('[aria-current="page"]').count(),1,route);
         assert((await page.locator('.source-note').innerText()).includes(source.commit.slice(0,8)));
       }
-      if((width===390||width===1440)&&['','read/workflow/','read/user-guide/'].includes(route)){
-        const name=route==='read/user-guide/'?'guide':route?'reader':'home';
+      if((width===390||width===1440)&&Object.hasOwn(captureNames,route)){
+        const name=captureNames[route];
         await page.screenshot({path:'.verification/'+name+'-'+width+'.png',fullPage:true,animations:'disabled'});
         await page.screenshot({path:'.verification/'+name+'-viewport-'+width+'.png',animations:'disabled'});
         if(!route)await page.locator('#delivery').screenshot({path:'.verification/delivery-'+width+'.png',style:'header,.skip{visibility:hidden!important}'});
@@ -60,9 +61,9 @@ try{
 
   await page.setViewportSize({width:1440,height:1000});
   await page.goto(origin+'/flow/');
-  await page.getByRole('link',{name:/^阅读介绍手册/}).click();
+  await page.getByRole('link',{name:/^从这里开始阅读/}).click();
   assert(page.url().endsWith('/flow/read/overview/'));
-  await page.getByRole('navigation',{name:'手册章节'}).getByRole('link',{name:'流程总览',exact:false}).click();
+  await page.getByRole('navigation',{name:'入门阅读'}).getByRole('link',{name:'流程总览',exact:false}).click();
   assert(page.url().endsWith('/flow/read/workflow/'));
   await page.locator('.toc a[href="#9director需要介入几次"]').click();
   assert.equal(decodeURIComponent(new URL(page.url()).hash),'#9director需要介入几次');
@@ -77,20 +78,25 @@ try{
   await page.goto(origin+'/flow/read/workflow/');
   assert(!await page.locator('.chapter-menu').evaluate(el=>el.open),'Mobile directory starts collapsed');
   await openMenu();
-  await page.getByRole('navigation',{name:'手册章节'}).getByRole('link',{name:'两种交付',exact:false}).click();
+  await page.screenshot({path:'.verification/navigation-390.png',fullPage:true});
+  await page.getByRole('navigation',{name:'接入与运行细节'}).getByRole('link',{name:'两种交付',exact:false}).click();
   assert(page.url().endsWith('/flow/read/delivery/'));
   assert((await page.locator('[aria-current="page"]').textContent()).includes('两种交付'));
   await openMenu();
-  await page.getByRole('navigation',{name:'手册章节'}).getByRole('link',{name:'原生自动化',exact:false}).click();
+  await page.getByRole('navigation',{name:'接入与运行细节'}).getByRole('link',{name:'原生自动化',exact:false}).click();
   assert(page.url().endsWith('/flow/read/automation/'));
   await openMenu();
-  await page.getByRole('navigation',{name:'手册章节'}).getByRole('link',{name:'群里反馈',exact:false}).click();
+  await page.getByRole('navigation',{name:'入门阅读'}).getByRole('link',{name:'群里反馈',exact:false}).click();
   assert(page.url().endsWith('/flow/read/user-guide/'));
   assert((await page.locator('article').textContent()).includes('用户提供已知事实就足够'));
+  const sourceDetails=page.locator('.source-note details');
+  assert(!await sourceDetails.evaluate(el=>el.open),'Source details start collapsed');
+  await sourceDetails.locator('summary').click();
+  assert(await sourceDetails.getByRole('link',{name:'查看来源记录'}).isVisible());
   await page.emulateMedia({media:'print'});
   assert(!await page.locator('header').isVisible());
   assert(await page.locator('article').isVisible());
   assert.deepEqual(errors,[]);assert.deepEqual(failures,[]);
-  const report={result:'passed',sourceCommit:source.commit,routes:routes.length,widths,combinations:routes.length*widths.length,checks:['one h1 and no horizontal overflow at every route/viewport','handbook navigation and active chapter','mobile directory collapse and expansion','desktop Director involvement anchor','theme switch and persistence','print reading mode','counter blocked and long-number fixture','no page errors or failed HTTP responses'],errors,failures};
+  const report={result:'passed',sourceCommit:source.commit,routes:routes.length,widths,combinations:routes.length*widths.length,checks:['one h1 and no horizontal overflow at every route/viewport','handbook navigation and active chapter','mobile directory collapse and expansion','desktop Director involvement anchor','theme switch and persistence','source disclosure expansion','print reading mode','counter blocked and long-number fixture','no page errors or failed HTTP responses'],errors,failures};
   await writeFile('.verification/browser-result.json',JSON.stringify(report,null,2));console.log(report);
 }finally{await browser.close()}

@@ -10,7 +10,7 @@ const pages=walk(root).filter(p=>p.endsWith('.html'));
 const attrs=(s,name)=>[...s.matchAll(new RegExp('\\b'+name+'="([^"]*)"','g'))].map(m=>m[1]);
 const text=s=>s.replace(/<[^>]+>/g,'');
 
-test('complete handbook and existing public reading addresses are built',()=>{
+test('all source-backed chapters and existing public reading addresses are built',()=>{
   assert.equal(source.pages.filter(p=>p.kind==='chapter').length,15);
   assert.equal(source.pages.filter(p=>p.kind==='overview').length,1);
   assert.equal(source.pages.filter(p=>p.kind==='topic').length,3);
@@ -70,7 +70,7 @@ test('all local links, assets and cross-document anchors resolve under /flow/',(
   console.log('Resolved local links/assets/anchors:',checked);
 });
 
-test('homepage separates startup choice, delivery endpoint and Director involvement',()=>{
+test('homepage explains the method before tools and preserves both task choices',()=>{
   const html=readFileSync(resolve(root,'index.html'),'utf8');
   const cards=[...html.matchAll(/<article\b[^>]*data-start="([^"]+)"[^>]*data-delivery="([^"]+)"[^>]*>([\s\S]*?)<\/article>/g)];
   assert.equal(cards.length,4);
@@ -81,7 +81,10 @@ test('homepage separates startup choice, delivery endpoint and Director involvem
     assert(copy.includes('合并、部署'));
     assert(!copy.includes('无需你再介入'));
   }
-  for(const value of ['第二个副产物','Director','MacMini','自动开发未启用','不是已经运行的自动开发服务','源头采纳与定时配置授权另计','规范 → 介绍 → 网站','GitHub Issues','Hermes','Webhook','2.0','双机','管理员接入并授权的工作群','https://www.bluexiii.com/hive/','https://www.bluexiii.com/acdl/'])assert(html.includes(value),value);
+  const hero=text(html.match(/<section class="hero wrap">([\s\S]*?)<\/section>/)[1]);
+  for(const value of ['协作方法','用户提出问题','负责人决定','AI助手','导出','教学示例','自动开发未启用'])assert(hero.includes(value),value);
+  for(const internal of ['Hermes','MacMini','Director','Webhook','副产物'])assert(!hero.includes(internal),internal);
+  for(const value of ['业务自动开发尚未启用','计划配置另外计算','重要决定','Issue用来记录','PR用来提交代码','管理员接入并授权的工作群','https://www.bluexiii.com/hive/','https://www.bluexiii.com/acdl/'])assert(html.includes(value),value);
   assert(!html.includes('Director 串起每一个阶段'));
   assert(!html.includes('canonical'),'No unverified publication canonical');
 });
@@ -142,7 +145,7 @@ test('shared footer retains the verified counter contract with no invented total
   for(const limitation of ['身份','跨天','长任务','接棒','旧Dots云端任务启停未知'])assert(acceptance.includes(limitation),limitation);
 });
 
-test('public editing preserves dialogue examples while removing only front matter',()=>{
+test('public editing preserves example dialogue and omits source metadata from prose',()=>{
   const example=readFileSync(resolve(root,'read/owner-commands/index.html'),'utf8');
   assert(example.includes('<blockquote>'));
   for(const content of ['我筛选后看到37条结果','采纳。','按PR待审模式处理Issue#42','按完整交付模式处理Issue#42'])assert(text(example).includes(content),content);

@@ -1,15 +1,15 @@
 ---
 import '../styles/site.css';
-const {title='HiveFlow · 让协作向前流转',description='Hermes统一调度远程Codex，MacMini保留本人直接协同；选择PR待审或完整交付，按真实证据跟踪结果。'}=Astro.props;
+const {title='HiveFlow · 人和AI一起处理软件问题',description='HiveFlow是一套让AI参与软件开发的协作方法：用户提出问题，负责人决定改什么，助手调查、修改和检查，再把处理结果告诉用户。'}=Astro.props;
 const base=import.meta.env.BASE_URL;
 ---
-<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#087e78"/><title>{title}</title><link rel="icon" href={base+'favicon.svg'} type="image/svg+xml"/><script is:inline>try{if(localStorage.getItem('flow-theme')==='dark')document.documentElement.dataset.theme='dark'}catch{}</script></head><body><a class="skip" href="#main">跳到正文</a><header><div class="wrap header-inner"><a class="brand" href={base}><span class="logo" aria-hidden="true">↳</span>HiveFlow<span class="brand-note">源自蜂巢</span></a><nav aria-label="主导航"><a href={base+'#delivery'}>交付方式</a><a href={base+'read/user-guide/'}>使用指南</a><a href={base+'#reading'}>阅读手册</a><button id="theme" aria-label="切换明暗主题" aria-pressed="false">◐</button></nav></div></header><slot/><footer class="wrap site-footer">
+<!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#087e78"/><title>{title}</title><link rel="icon" href={base+'favicon.svg'} type="image/svg+xml"/><script is:inline>try{if(localStorage.getItem('flow-theme')==='dark')document.documentElement.dataset.theme='dark'}catch{}</script></head><body><a class="skip" href="#main">跳到正文</a><header><div class="wrap header-inner"><a class="brand" href={base}><span class="logo" aria-hidden="true">↳</span>HiveFlow<span class="brand-note">源自蜂巢</span></a><nav aria-label="主导航"><a href={base+'#delivery'}>交付方式</a><a href={base+'read/user-guide/'}>使用指南</a><a href={base+'#reading'}>从这里读</a><button id="theme" aria-label="切换明暗主题" aria-pressed="false">◐</button></nav></div></header><slot/><footer class="wrap site-footer">
   <div class="footer-top">
-    <div><a class="brand" href={base}>HiveFlow</a><p>连接反馈、决定和有证据的交付。</p></div>
-    <nav class="footer-links" aria-label="页脚导航"><a href="https://www.bluexiii.com/hive/">蜂巢 ↗</a><a href="https://www.bluexiii.com/acdl/">ACDL ↗</a><a href="https://github.com/xiiiblue/hive-flow" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://github.com/xiiiblue/flow/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">网站：Apache-2.0</a><a href={base+'read/acceptance/'}>验证边界</a></nav>
+    <div><a class="brand" href={base}>HiveFlow</a><p>人和AI一起，把软件问题处理到底。</p></div>
+    <nav class="footer-links" aria-label="页脚导航"><a href="https://www.bluexiii.com/hive/">蜂巢 ↗</a><a href="https://www.bluexiii.com/acdl/">ACDL ↗</a><a href="https://github.com/xiiiblue/hive-flow" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://github.com/xiiiblue/flow/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">网站：Apache-2.0</a><a href={base+'read/acceptance/'}>接入与验证</a></nav>
   </div>
   <div class="footer-bottom">
-    <p class="fine">介绍手册公开阅读版 · 自动开发尚未启用</p>
+    <p class="fine">按本站来源记录，自动开发尚未启用 · <a href={base+'read/contributing/'}>内容来源与网站维护</a></p>
     <div class="footer-meta">
       <span class="site-counter" aria-label="域名访问统计（不蒜子）" title="不蒜子按域名汇总，非 HiveFlow 独立访问量">
         <span id="busuanzi_container_site_uv">域名访客 <strong id="busuanzi_value_site_uv"></strong></span>
