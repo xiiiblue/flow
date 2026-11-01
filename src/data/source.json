@@ -1,7 +1,7 @@
 {
   "repository": "xiiiblue/hive-os",
-  "commit": "65cfb248fd2fdd4b26cc6ce9d70ae575060ae041",
-  "reviewedOn": "2026-10-31",
+  "commit": "888856c78b44403ceef32782760fe01887c99d6b",
+  "reviewedOn": "2026-11-01",
   "handbookRoot": "docs/11-手册/05-自动化手册",
   "normativeRoot": "docs/06-自动化",
   "dependencyOrder": [
@@ -20,7 +20,7 @@
     "docs/11-手册/05-自动化手册/05-采纳与授权：把值得做和可以做分开.md": "f9a71c6dcbeb0a5df1ff459f07a457be064b03a5418d5a6fab90c013e53ab8e8",
     "docs/11-手册/05-自动化手册/06-事项状态：评审、进度和正式登记.md": "d1c1470e9186054e9b4b888808ebfb01042597a0e27aa99a487c31e8a59f8e72",
     "docs/11-手册/05-自动化手册/07-手动研发：选择PR待审或完整交付.md": "8fa0c004c7f003bcbb86072d7a5b125c33c4d4a43ce1e10942013138df59fc26",
-    "docs/11-手册/05-自动化手册/08-交付与回执：把结果带回原反馈者.md": "c9e40d576abff0bfacb1c2fe479e98d8c9fa4b675e06d07513bbaae97e4bdc9f",
+    "docs/11-手册/05-自动化手册/08-交付与回执：把结果带回原反馈者.md": "568aca83ec8e8a3e7cc7c0d6f58fc20c6c363f5b1b6f72ce5faf46482ac9527e",
     "docs/11-手册/05-自动化手册/09-原生自动化：先配置范围，再选择新事项.md": "600d311d48f35e7be7b0b57b7923d7e60b031772f025cd3b1c3e4356673e35d5",
     "docs/11-手册/05-自动化手册/10-采纳交接：记录、认领、撤销和恢复.md": "bb7ac04f2269b1a27d41ec1b335a981d83fbe9ca1655cc3d3f5b8444aa52a270",
     "docs/11-手册/05-自动化手册/11-调查与恢复：依据、隐私和未知结果.md": "3c1c53fb672dc5329c4349bdf394a3dc8f49147a5fed70a58f215b47f6bda35f",
