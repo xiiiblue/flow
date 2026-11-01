@@ -1,6 +1,6 @@
 ---
 import '../styles/site.css';
-const {title='HiveFlow · 全自动开发流水线',description='HiveFlow面向开发者反馈循环，让反馈调查、开发、检查和交付在批准范围内自动推进，尽可能减少人工转交与逐步确认；Director在需要时踩刹车。'}=Astro.props;
+const {title='HiveFlow · 自动化开发流水线',description='HiveFlow面向开发者反馈循环，让反馈调查、开发、检查和交付在批准范围内自动推进，尽可能减少人工转交与逐步确认；Director在必要决策节点审批。'}=Astro.props;
 const base=import.meta.env.BASE_URL;
 ---
 <!doctype html><html lang="zh-CN"><head><meta charset="UTF-8"/><meta name="viewport" content="width=device-width, initial-scale=1"/><meta name="description" content={description}/><meta name="theme-color" content="#087e78"/><title>{title}</title><link rel="icon" href={base+'favicon.svg'} type="image/svg+xml"/><script is:inline>try{if(localStorage.getItem('flow-theme')==='dark')document.documentElement.dataset.theme='dark'}catch{}</script></head><body><a class="skip" href="#main">跳到正文</a><header><div class="wrap header-inner"><a class="brand" href={base}><span class="logo" aria-hidden="true">↳</span>HiveFlow<span class="brand-note">源自蜂巢</span></a><nav aria-label="主导航"><a href={base+'#delivery'}>交付方式</a><a href={base+'read/user-guide/'}>使用指南</a><a href={base+'#reading'}>从这里读</a><button id="theme" aria-label="切换明暗主题" aria-pressed="false">◐</button></nav></div></header><slot/><footer class="wrap site-footer">
@@ -9,7 +9,7 @@ const base=import.meta.env.BASE_URL;
     <nav class="footer-links" aria-label="页脚导航"><a href="https://www.bluexiii.com/hive/">蜂巢 ↗</a><a href="https://www.bluexiii.com/acdl/">ACDL ↗</a><a href="https://github.com/xiiiblue/hive-flow" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a href="https://github.com/xiiiblue/flow/blob/main/LICENSE" target="_blank" rel="noopener noreferrer">网站：Apache-2.0</a><a href={base+'read/acceptance/'}>接入流水线</a></nav>
   </div>
   <div class="footer-bottom">
-    <p class="fine">全自动开发流水线 · <a href={base+'read/contributing/'}>内容来源与网站维护</a></p>
+    <p class="fine">自动化开发流水线 · <a href={base+'read/contributing/'}>内容来源与网站维护</a></p>
     <div class="footer-meta">
       <span class="site-counter" aria-label="域名访问统计（不蒜子）" title="不蒜子按域名汇总，非 HiveFlow 独立访问量">
         <span id="busuanzi_container_site_uv">域名访客 <strong id="busuanzi_value_site_uv"></strong></span>
