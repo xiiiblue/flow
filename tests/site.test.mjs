@@ -70,7 +70,7 @@ test('all local links, assets and cross-document anchors resolve under /flow/',(
   console.log('Resolved local links/assets/anchors:',checked);
 });
 
-test('homepage explains the method before tools and preserves both task choices',()=>{
+test('homepage explains the developer pipeline before tools and preserves both task choices',()=>{
   const html=readFileSync(resolve(root,'index.html'),'utf8');
   const cards=[...html.matchAll(/<article\b[^>]*data-start="([^"]+)"[^>]*data-delivery="([^"]+)"[^>]*>([\s\S]*?)<\/article>/g)];
   assert.equal(cards.length,4);
@@ -82,9 +82,9 @@ test('homepage explains the method before tools and preserves both task choices'
     assert(!copy.includes('无需你再介入'));
   }
   const hero=text(html.match(/<section class="hero wrap">([\s\S]*?)<\/section>/)[1]);
-  for(const value of ['协作方法','用户提出问题','负责人决定','AI助手','导出','教学示例','自动开发未启用'])assert(hero.includes(value),value);
-  for(const internal of ['Hermes','MacMini','Director','Webhook','副产物'])assert(!hero.includes(internal),internal);
-  for(const value of ['业务自动开发尚未启用','计划配置另外计算','重要决定','Issue用来记录','PR用来提交代码','管理员接入并授权的工作群','https://www.bluexiii.com/hive/','https://www.bluexiii.com/acdl/'])assert(html.includes(value),value);
+  for(const value of ['全自动开发流水线','开发者反馈','人工','Director','踩刹车','导出','教学示例'])assert(hero.includes(value),value);
+  for(const internal of ['Hermes','MacMini','Webhook','副产物'])assert(!hero.includes(internal),internal);
+  for(const value of ['开发者反馈循环','计划配置另外计算','重要决定','Issue用来记录','PR用来提交代码','管理员接入并授权的工作群','https://www.bluexiii.com/hive/','https://www.bluexiii.com/acdl/'])assert(html.includes(value),value);
   assert(!html.includes('Director 串起每一个阶段'));
   assert(!html.includes('canonical'),'No unverified publication canonical');
 });
@@ -107,14 +107,18 @@ test('handbook edition preserves conditional execution, uncertain notifications 
   const workflow=text(readFileSync(resolve(root,'read/workflow/index.html'),'utf8'));
   for(const value of ['手动＋PR待审','手动＋完整交付','定时＋PR待审','定时＋完整交付','源头采纳和定时配置准备另计','不承诺任何情况下固定一次'])assert(workflow.includes(value),value);
   const automation=text(readFileSync(resolve(root,'read/automation/index.html'),'utf8'));
-  assert(automation.includes('业务自动开发尚未启用'));
+  for(const value of ['Director','暂停','撤销','停止','在途','恢复'])assert(automation.includes(value),value);
   assert(automation.includes('明确清单不能作为采纳来源读取失败后的自动替代方案'));
   const receipts=text(readFileSync(resolve(root,'read/receipts/index.html'),'utf8'));
   assert(receipts.includes('用户已读'));
   assert(receipts.includes('不能换新标识'));
   const example=text(readFileSync(resolve(root,'read/owner-commands/index.html'),'utf8'));
   assert(example.includes('均为合成示例'));
-  assert(example.includes('不代表任何真实环境已完成这些动作'));
+  assert(example.includes('开发者反馈怎样沿流水线推进'));
+  for(const file of pages){
+    const value=text(readFileSync(file,'utf8'));
+    for(const internal of ['未启用','未验证','未验收','待验收','实际使用还在验证','旧Dots云端任务启停未知'])assert(!value.includes(internal),relative(root,file)+' -> '+internal);
+  }
 });
 
 test('shared footer retains the verified counter contract with no invented totals',()=>{
@@ -142,7 +146,7 @@ test('shared footer retains the verified counter contract with no invented total
   for(const retired of ['云端dots负责','企微审批关闭','新交付默认在原任务范围内，通过既有HTTP','PR→Hermes'])assert(!all.includes(retired),retired);
   assert(!/(?:203|51\.8)(?:上的|开发环境|的Codex)/.test(all));
   const acceptance=text(readFileSync(resolve(root,'read/acceptance/index.html'),'utf8'));
-  for(const limitation of ['身份','跨天','长任务','接棒','旧Dots云端任务启停未知'])assert(acceptance.includes(limitation),limitation);
+  for(const limitation of ['身份','跨天','长任务','接棒','Director','停止','恢复'])assert(acceptance.includes(limitation),limitation);
 });
 
 test('public editing preserves example dialogue and omits source metadata from prose',()=>{

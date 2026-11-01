@@ -11,7 +11,7 @@ page.on('response',r=>{if(r.status()>=400)failures.push([r.status(),r.url()])});
 await mkdir('.verification',{recursive:true});
 const routes=['',...source.pages.map(p=>'read/'+p.slug+'/')];
 const widths=[320,390,768,1440];
-const captureNames={'':'home','read/workflow/':'reader','read/user-guide/':'guide','read/overview/':'overview','read/introduction/':'introduction','read/adapters/':'adapters','read/owner-commands/':'example','read/contributing/':'maintenance'};
+const captureNames={'':'home','read/workflow/':'reader','read/user-guide/':'guide','read/overview/':'overview','read/introduction/':'introduction','read/adapters/':'adapters','read/owner-commands/':'example','read/contributing/':'maintenance','read/acceptance/':'integration','read/automation/':'automation'};
 const openMenu=async()=>{if(!await page.locator('.chapter-menu').evaluate(el=>el.open))await page.locator('.chapter-menu summary').click();};
 try{
   for(const width of widths){

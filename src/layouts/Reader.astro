@@ -30,7 +30,7 @@ const topics=source.pages.filter(page=>page.kind==='topic');
         <p class="nav-label">网站维护</p>
         <nav aria-label="网站维护"><a href={b+'read/contributing/'} aria-current={Astro.url.pathname===b+'read/contributing/'?'page':undefined}>{maintenance.title}</a></nav>
       </details>
-      <p class="fine">内容核对：{source.reviewedOn}<br/>实际接入情况见验证记录。</p>
+      <p class="fine">内容核对：{source.reviewedOn}<br/>自动流转与停止规则按需查阅。</p>
     </aside>
     <div class="reader-body">
       <div class="reader-kicker">HIVEFLOW / 阅读与查阅</div>
@@ -40,7 +40,7 @@ const topics=source.pages.filter(page=>page.kind==='topic');
         <details><summary>查看内容来源与适用范围</summary>
           <p>本站可独立阅读，无需访问私有仓库。网站不替代执行规范；实际任务按目标项目的当前规则和授权处理。教学示例不代表真实交付记录。</p>
           <p>维护顺序：规范→介绍→网站→独立副本。上游手册状态为Review；具体来源、原始摘要和网页对应章节保存在来源记录中。</p>
-          <a href="https://github.com/xiiiblue/flow/blob/main/src/data/handbook.md">原手册公开目录 ↗</a> · <a href="https://github.com/xiiiblue/flow/blob/main/src/data/source.json">查看来源记录 ↗</a>
+          <a href="https://github.com/xiiiblue/flow/blob/main/src/data/handbook.md">公开阅读目录 ↗</a> · <a href="https://github.com/xiiiblue/flow/blob/main/src/data/source.json">查看来源记录 ↗</a>
         </details>
       </div>
       <a class="text-link" href={b+'#reading'}>← 选择下一篇手册</a>

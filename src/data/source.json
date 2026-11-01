@@ -1,6 +1,6 @@
 {
   "repository": "xiiiblue/hive-os",
-  "commit": "81376639ffedf5ad8754ae856658779daebc4d34",
+  "commit": "acacfe0b280230c84a71d22b5e1fa15dde17292e",
   "reviewedOn": "2026-11-01",
   "handbookRoot": "docs/11-手册/05-自动化手册",
   "normativeRoot": "docs/06-自动化",
@@ -10,11 +10,11 @@
     "HiveFlow网站",
     "独立hive-flow仓库"
   ],
-  "editorialPolicy": "从固定提交整理公开介绍；规范仅本地核对。环境简称通用化、私有链接改说明、图示转静态流程；snapshotSHA256记录公开目录整理稿，files保存源文件原始摘要。首页和入门页按新读者的问题改写，详细运行规则供按需查阅；网站维护说明单列，不作为入门章节。改写不改变来源提交、原始摘要或业务规则。",
+  "editorialPolicy": "依据固定提交的规范与介绍手册整理。2026-11-01由Director确认定位为面向开发者反馈循环的全自动开发流水线，突出减少日常人工介入与Director停止权。公开页不展示内部实例启停、未完成验证和迁移清单，也不虚构上线或验收结果。环境名称通用化，私有链接改说明，图示转静态流程；snapshot是公开阅读目录改写稿，files保留源文件原始字节摘要。",
   "files": {
-    "docs/11-手册/05-自动化手册/README.md": "d3dcc0e27f5ea9b2a7a9a13fb367dbebea7edae1af027ec2818338bfabd46ddd",
-    "docs/11-手册/05-自动化手册/01-认识HiveFlow：把反馈、决定和交付连起来.md": "bb268f1bcce90634352c2eedc257fbb51a6f4fac63147310421d6e3bf4b25aad",
-    "docs/11-手册/05-自动化手册/02-角色与工具：每个参与者负责什么.md": "7ec0f55d337e94573b2acdd32ca7cf080e8455108f3ee7db3086d155069c2856",
+    "docs/11-手册/05-自动化手册/README.md": "ae5d327e52f68dff0fbac45e182c489d68327a7fa87235f99935c930541bfdac",
+    "docs/11-手册/05-自动化手册/01-认识HiveFlow：把反馈、决定和交付连起来.md": "6f0a2ed2e9a47ef223dde582cdd4f380befaee7de2c41ad5734f645af8d2239c",
+    "docs/11-手册/05-自动化手册/02-角色与工具：每个参与者负责什么.md": "5a17d24a3e4388fc49862326f60c610877d5fc383b1e0641e83bcebcf02be9ed",
     "docs/11-手册/05-自动化手册/03-流程总览：一条反馈怎样走到交付.md": "51a98dff19f7e1ec7ba12993a9865174e097ddde2372b950c86f90b35e0b800e",
     "docs/11-手册/05-自动化手册/04-群里反馈：怎样提问、调查和登记.md": "35d8362d3d76083c946d0e15f128fccfae72f688537fc5f198b1e9bcc2a04b0e",
     "docs/11-手册/05-自动化手册/05-采纳与授权：把值得做和可以做分开.md": "f9a71c6dcbeb0a5df1ff459f07a457be064b03a5418d5a6fab90c013e53ab8e8",
@@ -27,7 +27,7 @@
     "docs/11-手册/05-自动化手册/12-接入与验证：从离线演练到真实使用.md": "a1b4336510cd5521ea513aff7a9a8d25255d935361376f7b403cf54d23c61fa4",
     "docs/11-手册/05-自动化手册/13-附录A：术语、状态和常见问题.md": "4a30dd9279a6cad31bc8faa4a4e704216d378e8427a89ad677acbe9143d3a2d7",
     "docs/11-手册/05-自动化手册/14-附录B：完整案例与对话示例.md": "cd5710b884b4dd6883dce54ef08894e447e3701902d824fdd0ed4c880544ac72",
-    "docs/11-手册/05-自动化手册/15-附录C：网站取材与内容维护.md": "06e4143769b6f77c32745111d9e32d3ceb5890d25d8e3ecdc33b4dcee6c1d5d7"
+    "docs/11-手册/05-自动化手册/15-附录C：网站取材与内容维护.md": "88389b8b24fdf5aabc334eb1a5331db74cc42b0f3e09a8c7a8147633708d6bca"
   },
   "pages": [
     {
@@ -116,7 +116,7 @@
     },
     {
       "slug": "acceptance",
-      "title": "接入与验证",
+      "title": "接入流水线",
       "number": "12",
       "source": "docs/11-手册/05-自动化手册/12-接入与验证：从离线演练到真实使用.md",
       "kind": "chapter"
@@ -199,6 +199,6 @@
     "license": "Apache-2.0",
     "licenseUrl": "https://github.com/xiiiblue/hive-flow/blob/main/LICENSE"
   },
-  "snapshotSHA256": "bdd795e6c32eb60122a4a2a408c9deaa65467706257052a49eacc646d622d763",
+  "snapshotSHA256": "7a385d9b62bc9a765f76cccef556182acc22d5379c85e4edaab9108def7a1518",
   "edition": "2.0"
 }
