@@ -183,6 +183,7 @@
   "snapshot": "src/data/handbook.md",
   "snapshotSource": "docs/11-手册/05-自动化手册/README.md",
   "normativeChecks": [
+    "HFL-002",
     "HFL-003",
     "HFL-006",
     "HFL-007",
