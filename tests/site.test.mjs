@@ -110,7 +110,7 @@ test('handbook edition preserves conditional execution, uncertain notifications 
   for(const value of ['Director','审批','批准后','等待','已批准','不重复审批'])assert(automation.includes(value),value);
   assert(automation.includes('明确清单不能作为采纳来源读取失败后的自动替代方案'));
   const receipts=text(readFileSync(resolve(root,'read/receipts/index.html'),'utf8'));
-  assert(receipts.includes('用户已读'));
+  for(const fact of ['当前会话','项目固定的回执群','直接从GitHub','用户已读'])assert(receipts.includes(fact),fact);
   assert(receipts.includes('不能换新标识'));
   const example=text(readFileSync(resolve(root,'read/owner-commands/index.html'),'utf8'));
   assert(example.includes('均为合成示例'));
